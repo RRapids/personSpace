@@ -17,7 +17,11 @@ import java.io.IOException;
  **/
 @WebFilter(urlPatterns = "/*")
 public class CorsFilter implements Filter {
-    private static Logger logger = LoggerFactory.getLogger(CorsFilter.class);
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -34,13 +38,8 @@ public class CorsFilter implements Filter {
     }
 
     @Override
-    public void init(FilterConfig filterConfig) {
-        logger.info("跨域过滤器初始化");
-    }
-
-    @Override
     public void destroy() {
-        logger.info("跨域过滤器销毁");
+
     }
 
 }
