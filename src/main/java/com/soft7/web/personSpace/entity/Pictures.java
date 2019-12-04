@@ -3,16 +3,13 @@ package com.soft7.web.personSpace.entity;
 import java.util.Date;
 
 public class Pictures {
-    private int id;
+    private Integer id;
     private String picturename;
     private String picture;
-    private int photoid;
+    private Integer photoid;
     private String picturesdetails;
     private Date update;
-    private int userid;
-
-    public Pictures() {
-    }
+    private Integer userid;
 
     public Pictures(int id, String picturename, String picture, int photoid, String picturesdetails, Date update, int userid) {
         this.id = id;

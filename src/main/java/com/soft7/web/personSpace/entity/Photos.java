@@ -3,11 +3,11 @@ package com.soft7.web.personSpace.entity;
 import java.util.Date;
 
 public class Photos {
-    private int id;
+    private Integer id;
     private String photoname;
     private String photodetails;
     private Date createdate;
-    private int userid;
+    private Integer userid;
 
     public Photos() {
     }

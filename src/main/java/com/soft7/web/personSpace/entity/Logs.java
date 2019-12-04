@@ -11,24 +11,24 @@ import java.sql.Date;
  * @Date 2019/12/4
  **/
 @Data
-public class Log {
-    private Long id;
+public class Logs {
+    private Integer id;
     private String name;
     private Date logDate;
     private String content;
 
-    public Log(Long id, String name, Date logDate, String content) {
+    public Logs() {
         this.id = id;
         this.name = name;
         this.logDate = logDate;
         this.content = content;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -58,7 +58,7 @@ public class Log {
 
     @Override
     public String toString() {
-        return "Log{" +
+        return "Logs{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", logDate=" + logDate +

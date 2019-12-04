@@ -12,23 +12,23 @@ import java.sql.Date;
  **/
 @Data
 public class Message {
-    private Long id;
+    private Integer id;
     private String name;
     private Date datetime;
     private String content;
 
-    public Message(Long id, String name, Date datetime, String content) {
+    public Message(Integer id, String name, Date datetime, String content) {
         this.id = id;
         this.name = name;
         this.datetime = datetime;
         this.content = content;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
