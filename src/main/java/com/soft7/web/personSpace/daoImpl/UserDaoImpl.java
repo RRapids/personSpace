@@ -3,9 +3,7 @@ package com.soft7.web.personSpace.daoImpl;
 import com.soft7.web.personSpace.dao.UserDAO;
 import com.soft7.web.personSpace.entity.User;
 import com.soft7.web.personSpace.util.DataBaseConnection;
-import com.soft7.web.personSpace.util.DbUtil;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,13 +48,31 @@ public class UserDaoImpl implements UserDAO {
         pstmt.setString(1, accountNumber);
         ResultSet rs = pstmt.executeQuery();
         User user = new User();
-        if (rs.next()) {
-            user.setId(user.getId());
-            user.setUsername(user.getUsername());
-            user.setPassword(user.getPassword());
-            user.setFlag(user.getFlag());
-            user.setActive(user.getActive());
+        while (rs.next()){
+            Integer id = rs.getInt("id");
+            String userName = rs.getString("user_name");
+            String account_number = rs.getString("account_number");
+            String password = rs.getString("password");
+            String avatar = rs.getString("avatar");
+            Integer phone = rs.getInt("phone_number");
+            String gender = rs.getString("gender");
+            Integer age = rs.getInt("age");
+            String active = rs.getString("active");
+            String flag = rs.getString("flag");
+            user.setId(id);
+            user.setUsername(userName);
+            user.setAccountNumber(account_number);
+            user.setPassword(password);
+            user.setAvatar(avatar);
+            user.setPhoneNumber(phone);
+            user.setGender(gender);
+            user.setAge(age);
+            user.setActive(active);
+            user.setFlag(flag);
         }
+        rs.close();
+        pstmt.close();
+        dbc.close();
         return user;
     }
 
@@ -77,14 +93,14 @@ public class UserDaoImpl implements UserDAO {
     @Override
     public int insertUser(User user) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "insert into t_user(avatar,user_name,account_number,password,gender,phone_number,age,active,flag) VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into t_user(user_name,account_number,password,avatar,phone_number,gender,age,active,flag) VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
-        pstmt.setString(1, user.getAvatar());
-        pstmt.setString(2, user.getUsername());
-        pstmt.setString(3, user.getAccountNumber());
-        pstmt.setString(4, user.getPassword());
-        pstmt.setString(5, user.getGender());
-        pstmt.setInt(6, user.getPhoneNumber());
+        pstmt.setString(1, user.getUsername());
+        pstmt.setString(2, user.getAccountNumber());
+        pstmt.setString(3, user.getPassword());
+        pstmt.setString(4, user.getAvatar());
+        pstmt.setInt(5, user.getPhoneNumber());
+        pstmt.setString(6, user.getGender());
         pstmt.setInt(7, user.getAge());
         pstmt.setString(8, user.getActive());
         pstmt.setString(9, user.getFlag());
@@ -118,19 +134,18 @@ public class UserDaoImpl implements UserDAO {
         return n;
     }
 
-
     private List<User> convert(ResultSet rs) throws SQLException {
         List<User> userList = new ArrayList<>();
         while (rs.next()) {
             User user = new User();
             user.setId(rs.getInt("id"));
-            user.setAge(rs.getInt("age"));
-            user.setUsername(rs.getString("username"));
-            user.setPhoneNumber(rs.getInt("phoneNumber"));
-            user.setGender(rs.getString("gender"));
-            user.setAccountNumber(rs.getString("accountNumber"));
+            user.setUsername(rs.getString("user_name"));
+            user.setAccountNumber(rs.getString("account_number"));
             user.setPassword(rs.getString("password"));
             user.setAvatar(rs.getString("avatar"));
+            user.setPhoneNumber(rs.getInt("phone_number"));
+            user.setGender(rs.getString("gender"));
+            user.setAge(rs.getInt("age"));
             user.setActive(rs.getString("active"));
             user.setFlag(rs.getString("flag"));
             userList.add(user);
