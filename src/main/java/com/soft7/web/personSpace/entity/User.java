@@ -6,25 +6,13 @@ public class User {
     private Integer age;
     private String username;
     private Integer phoneNumber;
+    private String email;
     private String gender;
     private String accountNumber;
     private String password;
     private String avatar;
     private String active;
     private String flag;
-
-    public User() {
-        this.id = id;
-        this.age = age;
-        this.username = username;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.accountNumber = accountNumber;
-        this.password = password;
-        this.avatar = avatar;
-        this.active = active;
-        this.flag = flag;
-    }
 
     public Integer getId() {
         return id;
@@ -56,6 +44,14 @@ public class User {
 
     public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getGender() {
@@ -113,6 +109,7 @@ public class User {
                 ", age=" + age +
                 ", username='" + username + '\'' +
                 ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", password='" + password + '\'' +

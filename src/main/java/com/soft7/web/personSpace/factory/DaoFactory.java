@@ -1,12 +1,8 @@
 package com.soft7.web.personSpace.factory;
 
 
-import com.soft7.web.personSpace.dao.LogDAO;
-import com.soft7.web.personSpace.dao.MessageDAO;
-import com.soft7.web.personSpace.dao.UserDAO;
-import com.soft7.web.personSpace.daoImpl.LogDAOImpl;
-import com.soft7.web.personSpace.daoImpl.MessageDAOImpl;
-import com.soft7.web.personSpace.daoImpl.UserDaoImpl;
+import com.soft7.web.personSpace.dao.*;
+import com.soft7.web.personSpace.daoImpl.*;
 
 /**
  * @Classname DaoFactory
@@ -25,5 +21,14 @@ public class DaoFactory {
 
     public static LogDAO getLogDAOInstance() {
         return new LogDAOImpl();
+    }
+//    public static FrendsDAO getFriendsDAOInstance(){
+//
+//    }
+    public static PhotoDAO getPhotoDAOInstance(){
+        return new PhotoDAOImpl();
+    }
+    public static PictureDAO getPictureDAOInstance(){
+        return new PictureDAOImpl();
     }
 }

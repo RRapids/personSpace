@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDAO {
         DataBaseConnection dbc = new DataBaseConnection();
         String sql = "select active,avatar,id from t_user where account_number=? and password=? and flag=?";
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
-        pstmt.setString(1, user.getUsername());
+        pstmt.setString(1, user.getAccountNumber());
         pstmt.setString(2, user.getPassword());
         pstmt.setString(3, user.getFlag());
         ResultSet rs = pstmt.executeQuery();
@@ -55,6 +55,7 @@ public class UserDaoImpl implements UserDAO {
             String password = rs.getString("password");
             String avatar = rs.getString("avatar");
             Integer phone = rs.getInt("phone_number");
+            String email = rs.getString("email");
             String gender = rs.getString("gender");
             Integer age = rs.getInt("age");
             String active = rs.getString("active");
@@ -65,6 +66,7 @@ public class UserDaoImpl implements UserDAO {
             user.setPassword(password);
             user.setAvatar(avatar);
             user.setPhoneNumber(phone);
+            user.setEmail(email);
             user.setGender(gender);
             user.setAge(age);
             user.setActive(active);
@@ -93,17 +95,15 @@ public class UserDaoImpl implements UserDAO {
     @Override
     public int insertUser(User user) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "insert into t_user(user_name,account_number,password,avatar,phone_number,gender,age,active,flag) VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO t_user(account_number,user_name,email,password,active,flag) VALUES(?,?,?,?,?,?)";
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
-        pstmt.setString(1, user.getUsername());
-        pstmt.setString(2, user.getAccountNumber());
-        pstmt.setString(3, user.getPassword());
-        pstmt.setString(4, user.getAvatar());
-        pstmt.setInt(5, user.getPhoneNumber());
-        pstmt.setString(6, user.getGender());
-        pstmt.setInt(7, user.getAge());
-        pstmt.setString(8, user.getActive());
-        pstmt.setString(9, user.getFlag());
+
+        pstmt.setString(1, user.getAccountNumber());
+        pstmt.setString(2, user.getUsername());
+        pstmt.setString(3,user.getEmail());
+        pstmt.setString(4, user.getPassword());
+        pstmt.setString(5, user.getActive());
+        pstmt.setString(6, user.getFlag());
         int n = pstmt.executeUpdate();
         pstmt.close();
         dbc.close();
@@ -134,6 +134,40 @@ public class UserDaoImpl implements UserDAO {
         return n;
     }
 
+    @Override
+    public boolean checkUser(User user) throws Exception {
+        Boolean flag = false;
+        DataBaseConnection dbc = new DataBaseConnection();
+        String sql = "select * from t_user where user_name=?";
+        PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
+        pstmt.setString(1, user.getUsername());
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            flag = true;
+        }
+        dbc.close();
+        pstmt.close();
+        return flag;
+    }
+
+    @Override
+    public int QueryId(User user) throws Exception {
+        int b = 0;
+        DataBaseConnection dbc = new DataBaseConnection();
+        String sql = "select id from t_user where user_name =?";
+        PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
+        pstmt.setString(1, user.getUsername());
+        //查询的结果保存在结果集
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            //取id
+            b = rs.getInt(1);
+        }
+        rs.close();
+        pstmt.close();
+        return b;
+    }
+
     private List<User> convert(ResultSet rs) throws SQLException {
         List<User> userList = new ArrayList<>();
         while (rs.next()) {
@@ -144,6 +178,7 @@ public class UserDaoImpl implements UserDAO {
             user.setPassword(rs.getString("password"));
             user.setAvatar(rs.getString("avatar"));
             user.setPhoneNumber(rs.getInt("phone_number"));
+            user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
             user.setAge(rs.getInt("age"));
             user.setActive(rs.getString("active"));
