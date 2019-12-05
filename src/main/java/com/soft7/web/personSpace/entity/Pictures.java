@@ -11,6 +11,10 @@ public class Pictures {
     private Date update;
     private Integer userid;
 
+    public Pictures(){
+
+    }
+
     public Pictures(int id, String picturename, String picture, int photoid, String picturesdetails, Date update, int userid) {
         this.id = id;
         this.picturename = picturename;

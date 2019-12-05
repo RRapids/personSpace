@@ -6,11 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface PictureDAO {
-    Long insertPicture(Pictures pictures) throws SQLException;
+    int insertPicture(Pictures pictures) throws SQLException;
 
-    int deletePictureById(long id) throws SQLException;
+    int deletePictureById(int id) throws SQLException;
 
-    Pictures getPictureById(long id) throws SQLException;
-
-    List<Pictures> getPicturesByPhoto(long id) throws SQLException;
+    List<Pictures> getPicturesByPhoto(int id) throws SQLException;
 }
