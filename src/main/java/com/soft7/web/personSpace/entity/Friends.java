@@ -10,23 +10,23 @@ import lombok.Data;
  **/
 @Data
 public class Friends {
-    private Long id;
+    private Integer id;
     private String name;
     private String account;
     private String avatar;
 
-    public Friends(Long id, String name, String account, String avatar) {
+    public Friends(Integer id, String name, String account, String avatar) {
         this.id = id;
         this.name = name;
         this.account = account;
         this.avatar = avatar;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
