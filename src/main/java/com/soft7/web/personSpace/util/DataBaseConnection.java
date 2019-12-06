@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DataBaseConnection {
 
 	private String DBDRIVER	= "com.mysql.jdbc.Driver" ;
-	private String DBURL = "jdbc:mysql://localhost:3306/db_personspace" ;
+	private String DBURL = "jdbc:mysql://localhost:3306/db_space" ;
 	private String DBUSER	= "root" ;
 	private String DBPASSWORD = "root" ;
 	private Connection conn	= null ;

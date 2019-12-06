@@ -1,6 +1,5 @@
 package com.soft7.web.personSpace.servlet;
 
-import com.soft7.web.personSpace.dao.UserDAO;
 import com.soft7.web.personSpace.entity.User;
 import com.soft7.web.personSpace.factory.DaoFactory;
 
@@ -43,10 +42,12 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("avatar", user.getAvatar());
                 session.setAttribute("id", user.getId());
                 if (user.getActive().equals("1")) {
-                    request.getRequestDispatcher("loginsuccess.html").forward(request, response);
+                    response.sendRedirect("loginsuccess.html");
                 } else {
-                    request.getRequestDispatcher("err.html").forward(request, response);
+                    response.sendRedirect("err.html");
                 }
+            }else {
+                response.sendRedirect("err.html");
             }
         } catch (Exception e) {
             e.printStackTrace();
