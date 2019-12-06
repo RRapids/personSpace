@@ -99,14 +99,54 @@
         <div class="login">
             <h1>Register</h1>
             <form action="register.do" method="post" onsubmit="return check_admin(this)">
-                <input type="text" class="con" name="userAccount" placeholder="账号" required="required">
-                <input type="text" class="con" name="name" placeholder="昵称" required="required"/><br>
-                <input type="text" class="con" name="userEmail" placeholder="邮箱" required="required">
-                <input type="password" class="con" name="password" placeholder="密码" required="required"><br>
-                <tr>
-                    <td><input type="hidden" name="flag" value=1>
-                </tr>
-                <button type="submit" class="btn btn-primary btn-block btn-large">注册</button><br>
+                <table>
+                    <tr>
+                        <td height="40" align="right">头像：</td>
+                        <td><select name="image" size="1"
+                                    onchange="document.images['avatar'].src=options[selectedIndex].value;">
+                            <option value="images\face\Image1.gif">Image1
+                            <option value="images\face\Image2.gif">Image2
+                            <option value="images\face\Image3.gif">Image3
+                            <option value="images\face\Image4.gif">Image4
+                            <option value="images\face\Image5.gif">Image5
+                            <option value="images\face\Image6.gif">Image6
+                            <option value="images\face\Image7.gif">Image7
+                            <option value="images\face\Image8.gif">Image8
+                            <option value="images\face\Image9.gif">Image9
+                            <option value="images\face\Image10.gif">Image10
+                        </select>
+                            <img src="images/face/Image1.gif" alt="个人形象代言" name="avatar" width="32" height="32" id="avatar"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="con" name="userAccount" placeholder="账号" required="required">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="con" name="name" placeholder="昵称" required="required"/><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="con" name="userEmail" placeholder="邮箱" required="required">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" class="con" name="password" placeholder="密码" required="required"><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="hidden" name="flag" value=1>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-primary btn-block btn-large">注册</button><br>
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </body>
