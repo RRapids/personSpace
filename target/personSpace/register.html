@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>注册</title>
+        <style type="text/css">
+            body {
+                background: #333366;
+                width: 100%;
+                height: 100%;
+                font-family: 'Open Sans', sans-serif;
+            }
+
+            h1 {
+                display: block;
+                font-size: 2em;
+                margin-block-start: 0.67em;
+                margin-block-end: 0.67em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: bold;
+                margin: 0.67em 0;
+            }
+
+            .login h1 {
+                color: #fff;
+                text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                letter-spacing: 2px;
+                text-align: center;
+            }
+
+            .login {
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                margin: -150px 0 0 -150px;
+                width: 300px;
+                height: 300px;
+            }
+
+            .con {
+                width: 100%;
+                margin-bottom: 10px;
+                background: rgba(0, 0, 0, 0.3);
+                border: none;
+                outline: none;
+                padding: 20px;
+                font-size: 13px;
+                color: #fff;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+                
+                border-radius: 4px;
+                line-height: normal;
+            }
+
+            div {
+                display: block;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            .btn {
+                margin-bottom: 0;
+                text-align: center;
+                vertical-align: middle;
+                border: none;
+                outline: none;
+                width: 100px;
+                height: 35px;
+                margin-right: 10px;
+            }
+
+            .btn-primary {
+                background-color: #4a77d4;
+                background-repeat: repeat-x;
+                border: 1px solid #0096E6;
+                text-shadow: #314193;
+                box-shadow: #4A77D4;
+                color: #EEEEEE;
+            }
+
+                .btn-large {
+                    padding: 9px 14px;
+                    font-size: 15px;
+                    line-height: normal;
+                    border-radius: 5px;
+                }
+
+
+            .btn-block {
+                width: 100%;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login">
+            <h1>Register</h1>
+            <form action="register.do" method="post" onsubmit="return check_admin(this)">
+                <table>
+                    <tr>
+                        <td height="40" align="right">头像：</td>
+                        <td><select name="image" size="1"
+                                    onchange="document.images['avatar'].src=options[selectedIndex].value;">
+                            <option value="images\face\Image1.gif">Image1
+                            <option value="images\face\Image2.gif">Image2
+                            <option value="images\face\Image3.gif">Image3
+                            <option value="images\face\Image4.gif">Image4
+                            <option value="images\face\Image5.gif">Image5
+                            <option value="images\face\Image6.gif">Image6
+                            <option value="images\face\Image7.gif">Image7
+                            <option value="images\face\Image8.gif">Image8
+                            <option value="images\face\Image9.gif">Image9
+                            <option value="images\face\Image10.gif">Image10
+                        </select>
+                            <img src="images/face/Image1.gif" alt="个人形象代言" name="avatar" width="32" height="32" id="avatar"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="con" name="userAccount" placeholder="账号" required="required">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="con" name="name" placeholder="昵称" required="required"/><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="con" name="userEmail" placeholder="邮箱" required="required">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" class="con" name="password" placeholder="密码" required="required"><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="hidden" name="flag" value=1>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-primary btn-block btn-large">注册</button><br>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
