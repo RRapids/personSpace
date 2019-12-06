@@ -5,7 +5,7 @@ import com.soft7.web.personSpace.entity.Friends;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface FrendsDAO {
+public interface FriendsDAO {
     int insertFriend(Friends friends) throws SQLException;
 
     int deleteFriendById(int id) throws SQLException;

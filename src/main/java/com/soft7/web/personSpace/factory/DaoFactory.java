@@ -22,13 +22,16 @@ public class DaoFactory {
     public static LogDAO getLogDAOInstance() {
         return new LogDAOImpl();
     }
-//    public static FrendsDAO getFriendsDAOInstance(){
-//
-//    }
-    public static PhotoDAO getPhotoDAOInstance(){
+
+    public static FriendsDAO getFriendsDAOInstance() {
+        return new FriendsDAOImpl();
+    }
+
+    public static PhotoDAO getPhotoDAOInstance() {
         return new PhotoDAOImpl();
     }
-    public static PictureDAO getPictureDAOInstance(){
+
+    public static PictureDAO getPictureDAOInstance() {
         return new PictureDAOImpl();
     }
 }

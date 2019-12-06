@@ -15,7 +15,7 @@ public class Friends {
     private String account;
     private String avatar;
 
-    public Friends(Integer id, String name, String account, String avatar) {
+    public Friends() {
         this.id = id;
         this.name = name;
         this.account = account;

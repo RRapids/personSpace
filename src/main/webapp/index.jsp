@@ -11,6 +11,9 @@
     <title>测试</title>
   </head>
   <body>
+  <form action="FriendsServlet.do" method="get">
+    <input type="submit">
+  </form>
   $END$
   </body>
 </html>

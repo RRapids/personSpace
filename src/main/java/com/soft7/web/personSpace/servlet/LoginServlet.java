@@ -1,5 +1,8 @@
 package com.soft7.web.personSpace.servlet;
 
+import com.soft7.web.personSpace.dao.FriendsDAO;
+import com.soft7.web.personSpace.dao.UserDAO;
+import com.soft7.web.personSpace.entity.Friends;
 import com.soft7.web.personSpace.entity.User;
 import com.soft7.web.personSpace.factory.DaoFactory;
 
@@ -11,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @Classname ${NAME}
@@ -21,6 +26,9 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet.do"})
 public class LoginServlet extends HttpServlet {
+    private UserDAO userDAO = DaoFactory.getUserDAOInstance();
+    private FriendsDAO friendsDAO = DaoFactory.getFriendsDAOInstance();
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -35,14 +43,22 @@ public class LoginServlet extends HttpServlet {
         user.setAccountNumber(userAccount);
         user.setPassword(userPassword);
         user.setFlag(flag);
-        HttpSession session = request.getSession();
+
         try {
             if (DaoFactory.getUserDAOInstance().login(user)) {
-                session.setAttribute("username", user.getUsername());
-                session.setAttribute("avatar", user.getAvatar());
-                session.setAttribute("id", user.getId());
+                request.setAttribute("username", user.getUsername());
+                request.setAttribute("avatar", user.getAvatar());
+                request.setAttribute("id", user.getId());
+                //接收好友信息
+                try {
+                    List<Friends> friends = friendsDAO.getAllFriends();
+                    request.setAttribute("friends",friends);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                //
                 if (user.getActive().equals("1")) {
-                    response.sendRedirect("loginsuccess.html");
+                    request.getRequestDispatcher("main.jsp").forward(request,response);
                 } else {
                     response.sendRedirect("err.html");
                 }

@@ -57,7 +57,7 @@ public class LogDAOImpl implements LogDAO {
     @Override
     public int deleteLogsById(int id) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "SELECT * FROM t_log WHERE id =?";
+        String sql = "DELETE FROM t_log WHERE id =?";
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         int n = pstmt.executeUpdate();
         pstmt.close();

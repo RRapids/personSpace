@@ -25,7 +25,6 @@ public class RegisterServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-//        out.println("OK");
         out.println("<html>");
         out.println("<body><center><h3>");
         String account = request.getParameter("userAccount");
@@ -40,14 +39,12 @@ public class RegisterServlet extends HttpServlet {
         user.setEmail(userEmail);
         user.setFlag(flag);
         user.setActive("1");
-//        out.println(user);
         try {
             if (!DaoFactory.getUserDAOInstance().checkUser(user)) {
-//                out.println(user);
                 DaoFactory.getUserDAOInstance().insertUser(user);
                 user.setId(DaoFactory.getUserDAOInstance().QueryId(user));
                 out.println(user);
-                out.println("注册成功!请到邮箱激活");
+                out.println("注册成功! <a href='login.html'>请登录</a>");
 //                new Mail(user);
 //                int i = userEmail.indexOf("@");
 //                out.println("注册成功!请到邮箱激活");

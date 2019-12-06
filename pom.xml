@@ -17,6 +17,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -98,5 +99,5 @@
             </plugins>
         </pluginManagement>
     </build>
-    
+
 </project>
