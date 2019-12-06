@@ -22,6 +22,15 @@ public class UserDaoImplTest {
 
     @Test
     public void login() {
+        User user=new User();
+        user.setAccountNumber("111");
+        user.setPassword("123456");
+        user.setFlag("1");
+        try {
+            System.out.println(userDao.login(user));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
