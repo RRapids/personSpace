@@ -1,7 +1,6 @@
 package com.soft7.web.personSpace.daoImpl;
 
 import com.soft7.web.personSpace.dao.PhotoDAO;
-import com.soft7.web.personSpace.entity.Logs;
 import com.soft7.web.personSpace.entity.Photos;
 import com.soft7.web.personSpace.util.DataBaseConnection;
 
@@ -57,5 +56,25 @@ public class PhotoDAOImpl implements PhotoDAO {
         return photoList;
     }
 
-
+    @Override
+    public List<Photos> selectAllPhotos() throws SQLException {
+        DataBaseConnection dbc = new DataBaseConnection();
+        String sql = "SELECT * FROM t_photos";
+        PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        List<Photos> photosList = new ArrayList<>();
+        while (rs.next()){
+            Photos photos = new Photos();
+            photos.setId(rs.getInt("id"));
+            photos.setPhotoname(rs.getString("photo_name"));
+            photos.setPhotodetails(rs.getString("pho_details"));
+            photos.setCreatedate(rs.getDate("create_date"));
+            photos.setUserid(rs.getInt("user_id"));
+            photosList.add(photos);
+        }
+        rs.close();
+        pstmt.close();
+        dbc.close();
+        return photosList;
+    }
 }

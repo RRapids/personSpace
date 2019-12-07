@@ -80,4 +80,17 @@ public class Pictures {
     public void setUserid(int userid) {
         this.userid = userid;
     }
+
+    @Override
+    public String toString() {
+        return "Pictures{" +
+                "id=" + id +
+                ", picturename='" + picturename + '\'' +
+                ", picture='" + picture + '\'' +
+                ", photoid=" + photoid +
+                ", picturesdetails='" + picturesdetails + '\'' +
+                ", update=" + update +
+                ", userid=" + userid +
+                '}';
+    }
 }

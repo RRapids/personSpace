@@ -38,31 +38,35 @@ public class LoginServlet extends HttpServlet {
         String userAccount = request.getParameter("account");
         String userPassword = request.getParameter("password");
         String flag = request.getParameter("flag");
-
         User user = new User();
         user.setAccountNumber(userAccount);
         user.setPassword(userPassword);
         user.setFlag(flag);
-
+        //接收好友信息
+        List<Friends> friends = null;
+        try {
+            friends = friendsDAO.getAllFriends();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //使用session传值
+        HttpSession session = request.getSession();
+        //判断并传值
         try {
             if (DaoFactory.getUserDAOInstance().login(user)) {
-                request.setAttribute("username", user.getUsername());
-                request.setAttribute("avatar", user.getAvatar());
-                request.setAttribute("id", user.getId());
-                //接收好友信息
-                try {
-                    List<Friends> friends = friendsDAO.getAllFriends();
-                    request.setAttribute("friends",friends);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                user = userDAO.getUserByAccount(userAccount);
+                session.setAttribute("username", user.getUsername());
+                session.setAttribute("avatar", user.getAvatar());
+                session.setAttribute("account", user.getAccountNumber());
+                session.setAttribute("id",user.getId());
+                session.setAttribute("friends", friends);
                 //
                 if (user.getActive().equals("1")) {
                     request.getRequestDispatcher("main.jsp").forward(request,response);
                 } else {
                     response.sendRedirect("err.html");
                 }
-            }else {
+            } else {
                 response.sendRedirect("err.html");
             }
         } catch (Exception e) {

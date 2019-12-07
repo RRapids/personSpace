@@ -11,4 +11,6 @@ public interface PhotoDAO {
     int deletePhotoById(int id) throws SQLException;
 
     List<Photos> getPhotoByUser(int id) throws SQLException;
+
+    List<Photos> selectAllPhotos() throws SQLException;
 }
