@@ -20,8 +20,6 @@
             position: absolute;
             top: 400px;
             right: 200px;
-            width: 100px;
-            margin: 0 auto;
         }
     </style>
 </head>
@@ -34,7 +32,7 @@
         </td>
     </tr>
     <form>
-        <table width="20%" border="1" cellpadding="0">
+        <table border="1" cellpadding="0">
             <%
                 request.setCharacterEncoding("gb2312");
                 List<Friends> friendsList = (List<Friends>) session.getAttribute("friends");
