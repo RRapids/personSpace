@@ -1,6 +1,5 @@
 <%@ page import="com.soft7.web.personSpace.entity.User" %>
-<%@ page import="com.soft7.web.personSpace.dao.UserDAO" %>
-<%@ page import="com.soft7.web.personSpace.daoImpl.UserDaoImpl" %>
+<%@ page import="com.soft7.web.personSpace.factory.DaoFactory" %>
 <%@ page contentType="text/html;charset=GB2312" language="java" %>
 <html>
 <head>
@@ -230,12 +229,11 @@
             top: -10px;
         }
     </style>
-
 </head>
 <body>
 <%
-    int id = (int) session.getAttribute("id");
-    String username = (String) session.getAttribute("username");
+    String account = (String) session.getAttribute("account");
+    User user = DaoFactory.getUserDAOInstance().getUserByAccount(account);
 %>
 
 <div class="div4">
@@ -257,7 +255,7 @@
             <table>
                 <tr>
                     <td><img src="images/other/日志.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="//www.runoob.com">日志</a></td>
+                    <td><a href="log.jsp">日志</a></td>
                 </tr>
                 <tr>
                     <td><img src="images/other/相册.png" style="height: 32px;width: 32px;"/></td>
@@ -265,7 +263,7 @@
                 </tr>
                 <tr>
                     <td><img src="images/other/留言板.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="//www.runoob.com">留言板</a></td>
+                    <td><a href="message.jsp">留言板</a></td>
                 </tr>
             </table>
         </div>
@@ -326,9 +324,9 @@
 <div style="background-image: url(images/other/26.jpg);" class="tupian9">
 
     <%-- 获取头像  --%>
-    <a href="userInfo.jsp"><img src="<%=session.getAttribute("avatar")%>" class="tupian10"/></a>
+    <a href="changeUserInfo.jsp"><img src="<%=user.getAvatar()%>" class="tupian10"/></a>
     <%--  获取呢称--%>
-    <label class="label1"><%=username%>的个人空间</label>
+    <label class="label1"><%=user.getUsername()%>的个人空间</label>
 
     <img src="images/other/赞.png" alt="" class="tupian11"/>
 
@@ -336,14 +334,14 @@
 
 <div class="div3" style="background-color: rgb(250,250,250);">
     <ul style="color: #F0F8FF;">
-        <li><a href="#home">主页</a></li>
-        <li><a href="#news">日志</a></li>
-        <li><a href="#contact">相册</a></li>
-        <li><a href="#about">留言板</a></li>
+        <li><a href="main.jsp">主页</a></li>
+        <li><a href="log.jsp">日志</a></li>
+        <li><a href="#">相册</a></li>
+        <li><a href="message.jsp">留言板</a></li>
         <li><a href="#about">说说</a></li>
-        <li><a href="#about">个人档</a></li>
-        <li><a href="#about">音乐</a></li>
-        <li><a href="#about">更多</a></li>
+        <li><a href="userInfo.jsp">个人档</a></li>
+        <li><a href="https://y.qq.com/">音乐</a></li>
+        <li><a href="http://www.4399.com/">更多</a></li>
     </ul>
 </div>
 </body>

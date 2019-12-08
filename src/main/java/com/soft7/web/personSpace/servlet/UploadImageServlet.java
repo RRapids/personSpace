@@ -53,7 +53,7 @@ public class UploadImageServlet extends HttpServlet {
         try {
             su.upload();
             // 将上传文件全部保存到指定目录,必须保证upload目录在应用程序根文件夹中存在
-            su.save("/images/face", SmartUpload.SAVE_VIRTUAL);
+            su.save("images/face", SmartUpload.SAVE_VIRTUAL);
             for (int i = 0; i < su.getFiles().getCount(); i++) {
                 file = su.getFiles().getFile(i);
                 // 若文件不存在则继续
@@ -64,7 +64,8 @@ public class UploadImageServlet extends HttpServlet {
 
             User user = new User();
             user.setId(id);
-            user.setAvatar("images/face/"+file.getFieldName());
+            //
+            user.setAvatar("images/face/"+file.getFileName());
             DaoFactory.getUserDAOInstance().updateUser(user);
             session.setAttribute("image",user.getAvatar());
             out.print("<script language=javascript>alert('头像上传成功！！！');" +
@@ -73,7 +74,7 @@ public class UploadImageServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
             out.print("<script language=javascript>alert('头像上传失败！！！请检查文件格式和大小！');" +
-                    "window.location.href='userInfo.jsp';</script>");
+                    "window.location.href='changeUserInfo.jsp';</script>");
         }
         out.println("</h3></center></body></html>");
     }

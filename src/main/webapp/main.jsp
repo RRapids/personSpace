@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="css.css">
     <title>主界面</title>
     <meta http-equiv="content-type" content="text/html; charset=gb2312"/>
+    <style>
+
+    </style>
 </head>
 <body>
 <%

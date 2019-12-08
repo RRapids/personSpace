@@ -18,7 +18,7 @@
     <style type="text/css">
         .juli {
             position: absolute;
-            top: 500px;
+            top: 400px;
             right: 200px;
             width: 100px;
             margin: 0 auto;
@@ -27,7 +27,6 @@
 </head>
 
 <body>
-
 <div class="juli">
     <tr>
         <td>
@@ -51,9 +50,7 @@
             </tr>
             <%}%>
         </table>
-
     </form>
 </div>
-
 </body>
 </html>

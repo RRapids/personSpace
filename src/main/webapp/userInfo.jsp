@@ -1,40 +1,35 @@
-<%--
+<%@ page import="com.soft7.web.personSpace.entity.User" %>
+<%@ page import="com.soft7.web.personSpace.factory.DaoFactory" %><%--
   Created by IntelliJ IDEA.
-  User: 79876
-  Date: 2019/10/28
-  Time: 8:34
+  User: tengf
+  Date: 2019/12/8
+  Time: 18:26
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=GB2312" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>�û���Ϣ</title>
+    <title>Title</title>
 </head>
-<body>
+<body background="images/other/InfoBg.jpg">
 
 <%
-    int id = (int) session.getAttribute("id");
+    String account = (String) session.getAttribute("account");
     String username = (String) session.getAttribute("username");
+    User user = DaoFactory.getUserDAOInstance().getUserByAccount(account);
 %>
 
 <center>
     <form action="uploadImage.do" method="post" enctype="multipart/form-data">
         <table>
             <br><br>
-            <h1><font color="#00008b">�޸�ͷ��</font></h1><br>
-            <h2>�û���:<%=username%></h2>
+            <h1><font color="#00008b"><%=username%>的个人信息</font></h1><br>
+            <span><img src="<%=user.getAvatar()%>"></span>
+            <h2>用户名:<%=username%></h2>
+            <h3>账号：<%=user.getAccountNumber()%></h3>
+            <h3>手机号：<%=user.getPhoneNumber()%></h3>
+            <h3>邮箱：<%=user.getEmail()%></h3>
             <br>
-            <label for="file">�ϴ�ͷ��ͼƬ��</label> <input type="file" id="file" name="file" value="D:\javastudy\project\personSpace\src\main\webapp\images\face">
-            <br>
-            <h4><font color="#cd5c5c">ע�⣺�ļ���С���ܳ���10KB</font></h4><br>
-            <tr>
-                <td colspan="2">
-                    <input type="hidden" name="id" value="<%=id%>">
-                    <div align="center">
-                        <input type="submit" value="�ύ">
-                    </div>
-                </td>
-            </tr>
         </table>
     </form>
 </center>
