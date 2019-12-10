@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="css.css">
     <title>主界面</title>
     <meta http-equiv="content-type" content="text/html; charset=gb2312"/>
-    <style>
-
-    </style>
 </head>
 <body>
 <%
@@ -22,7 +19,6 @@
 <script>
     window.alert("sorry!无此用户，请重新登录！")
 </script>
-
 <%}%>
 
 <div>

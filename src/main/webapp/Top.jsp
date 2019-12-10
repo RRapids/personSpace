@@ -166,7 +166,7 @@
 
         .tupian9 {
             height: 270px;
-            width: 1560px;
+            width: 100%;
             position: relative;
             top: -13px;
             left: -30px;
@@ -196,10 +196,10 @@
 
         .div3 {
             height: 39px;
-            width: 1700px;
+            width: 100%;
             position: relative;
             top: -15px;
-            left: -10px;
+            left: 0px;
         }
 
         ul {
@@ -223,10 +223,10 @@
 
         .div4 {
             height: 44px;
-            width: inherit;
+            width: 100%;
             background-color: rgb(31, 31, 31);
             position: relative;
-            top: -10px;
+            top: -14px;
         }
     </style>
 </head>
@@ -236,113 +236,113 @@
     User user = DaoFactory.getUserDAOInstance().getUserByAccount(account);
 %>
 
-<div class="div4">
-    <div class="dropdown">
-        <span><img src="images/other/9.png" class="tupiapn1"/></span>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">
-            <img src="images/other/man.png" style="position: relative;top: 4px;height: 60%;"/>
-            个人中心
-        </button>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">
-            <img src="images/other/home.png" style="position: relative;top: 10px;"/>
-            我的主页
-        </button>
-        <div class="dropdown-content">
-            <table>
-                <tr>
-                    <td><img src="images/other/日志.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="log.jsp">日志</a></td>
-                </tr>
-                <tr>
-                    <td><img src="images/other/相册.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="//www.runoob.com">相册</a></td>
-                </tr>
-                <tr>
-                    <td><img src="images/other/留言板.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="message.jsp">留言板</a></td>
-                </tr>
-            </table>
+    <div class="div4">
+        <div class="dropdown">
+            <span><img src="images/other/9.png" class="tupiapn1"/></span>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img src="images/other/man.png" style="position: relative;top: 4px;height: 60%;"/>
+                个人中心
+            </button>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img src="images/other/home.png" style="position: relative;top: 10px;"/>
+                我的主页
+            </button>
+            <div class="dropdown-content">
+                <table>
+                    <tr>
+                        <td><img src="images/other/日志.png" style="height: 32px;width: 32px;"/></td>
+                        <td><a href="log.jsp">日志</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/other/相册.png" style="height: 32px;width: 32px;"/></td>
+                        <td><a href="pictures.jsp">相册</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/other/留言板.png" style="height: 32px;width: 32px;"/></td>
+                        <td><a href="message.jsp">留言板</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn1">
+                <img src="images/other/friends.png" style="position: relative;top: 5px;height: 70%;"/>
+                好友
+            </button>
+            <div class="dropdown-content">
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn1">
+                <img src="images/other/应用.png" style="position: relative;top: 5px;height: 70%;"/>
+                游戏
+            </button>
+            <div class="dropdown-content">
+                <table>
+                    <tr>
+                        <td><img src="images/other/18.png" style="height: 32px;width: 32px;"/></td>
+                        <td><a href="//www.runoob.com">英雄联盟</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/other/19.png" style="height: 32px;width: 32px;"/></td>
+                        <td><a href="//www.runoob.com">雨雪之刃</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/other/20.png" style="height: 32px;width: 32px;"/></td>
+                        <td><a href="//www.runoob.com">拳皇</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/other/21.png" style="height: 32px;width: 32px;"/></td>
+                        <td><a href="//www.runoob.com">龙崖</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn1">
+                <img src="images/other/皮肤.png" style="position: relative;top: 5px;height: 60%;"/>
+                装扮
+            </button>
+            <div class="dropdown-content">
+            </div>
+        </div>
+        <div class="dropdown">
+            <span><img src="images/other/15.png" class="tupiapn7"/></span>
+        </div>
+        <div class="div1" style="background-color: rgb(31,31,31);">
+            <input class="input1" type="text" value="用户/动态"/>
+            <input class="input2" type="button" value="搜索"/>
+        </div>
+        <div class="div2" style="background-color: rgb(31,31,31);">
+            <img src="images/other/16.png" class="tupian8"/>
         </div>
     </div>
-    <div class="dropdown">
-        <button class="dropbtn1">
-            <img src="images/other/friends.png" style="position: relative;top: 5px;height: 70%;"/>
-            好友
-        </button>
-        <div class="dropdown-content">
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn1">
-            <img src="images/other/应用.png" style="position: relative;top: 5px;height: 70%;"/>
-            游戏
-        </button>
-        <div class="dropdown-content">
-            <table>
-                <tr>
-                    <td><img src="images/other/18.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="//www.runoob.com">英雄联盟</a></td>
-                </tr>
-                <tr>
-                    <td><img src="images/other/19.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="//www.runoob.com">雨雪之刃</a></td>
-                </tr>
-                <tr>
-                    <td><img src="images/other/20.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="//www.runoob.com">拳皇</a></td>
-                </tr>
-                <tr>
-                    <td><img src="images/other/21.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="//www.runoob.com">龙崖</a></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn1">
-            <img src="images/other/皮肤.png" style="position: relative;top: 5px;height: 60%;"/>
-            装扮
-        </button>
-        <div class="dropdown-content">
-        </div>
-    </div>
-    <div class="dropdown">
-        <span><img src="images/other/15.png" class="tupiapn7"/></span>
-    </div>
-    <div class="div1" style="background-color: rgb(31,31,31);">
-        <input class="input1" type="text" value="用户/动态"/>
-        <input class="input2" type="button" value="搜索"/>
-    </div>
-    <div class="div2" style="background-color: rgb(31,31,31);">
-        <img src="images/other/16.png" class="tupian8"/>
-    </div>
-</div>
-<div style="background-image: url(images/other/26.jpg);" class="tupian9">
+    <div style="background-image: url(images/other/26.jpg);" class="tupian9">
 
-    <%-- 获取头像  --%>
-    <a href="changeUserInfo.jsp"><img src="<%=user.getAvatar()%>" class="tupian10"/></a>
-    <%--  获取呢称--%>
-    <label class="label1"><%=user.getUsername()%>的个人空间</label>
+        <%-- 获取头像  --%>
+        <a href="changeUserInfo.jsp"><img src="<%=user.getAvatar()%>" class="tupian10"/></a>
+        <%--  获取呢称--%>
+        <label class="label1"><%=user.getUsername()%>的个人空间</label>
 
-    <img src="images/other/赞.png" alt="" class="tupian11"/>
+        <img src="images/other/赞.png" alt="" class="tupian11"/>
 
-</div>
+    </div>
 
-<div class="div3" style="background-color: rgb(250,250,250);">
-    <ul style="color: #F0F8FF;">
-        <li><a href="main.jsp">主页</a></li>
-        <li><a href="log.jsp">日志</a></li>
-        <li><a href="#">相册</a></li>
-        <li><a href="message.jsp">留言板</a></li>
-        <li><a href="#about">说说</a></li>
-        <li><a href="userInfo.jsp">个人档</a></li>
-        <li><a href="https://y.qq.com/">音乐</a></li>
-        <li><a href="http://www.4399.com/">更多</a></li>
-    </ul>
-</div>
+    <div class="div3" style="background-color: rgb(250,250,250);">
+        <ul style="color: #F0F8FF;">
+            <li><a href="main.jsp">主页</a></li>
+            <li><a href="log.jsp">日志</a></li>
+            <li><a href="pictures.jsp">相册</a></li>
+            <li><a href="message.jsp">留言板</a></li>
+            <li><a href="#about">说说</a></li>
+            <li><a href="userInfo.jsp">个人档</a></li>
+            <li><a href="https://y.qq.com/">音乐</a></li>
+            <li><a href="http://www.4399.com/">更多</a></li>
+        </ul>
+    </div>
 </body>
 </html>

@@ -322,6 +322,9 @@
     </style>
 </head>
 <body>
+<div>
+    <jsp:include page="Top.jsp" flush="true"></jsp:include>
+</div>
 <div class="header">
     ª∂”≠¿¥µΩ¡Ù—‘∞Â
 </div>

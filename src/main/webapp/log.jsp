@@ -78,6 +78,9 @@
 </head>
 <body class="body">
 <div>
+    <jsp:include page="Top.jsp" flush="true"></jsp:include>
+</div>
+<div>
     <div class="mainbox_top">
         <li>
             <a href="#mine" class="font_top">我的日志</a>
