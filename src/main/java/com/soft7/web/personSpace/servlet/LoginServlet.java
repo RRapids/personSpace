@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("friends", friends);
                 //
                 if (user.getActive().equals("1")) {
+                    request.setAttribute("id",user.getId());
                     request.getRequestDispatcher("main.jsp").forward(request,response);
                 } else {
                     response.sendRedirect("err.html");

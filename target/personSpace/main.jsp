@@ -22,11 +22,11 @@
 <%}%>
 
 <div>
-    <jsp:include page="Top.jsp"></jsp:include>
+    <jsp:include page="Top.jsp" flush="true"></jsp:include>
 </div>
 
 <div>
-    <jsp:include page="center.html"></jsp:include>
+    <jsp:include page="center.html" flush="true"></jsp:include>
 </div>
 
 <div>
