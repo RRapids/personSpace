@@ -12,6 +12,7 @@
 <%@ page contentType="text/html;charset=GB2312" language="java" %>
 <html>
 <head>
+
     <meta charset="GB2312">
     <meta http-equiv="content-type" content="text/html; charset=gb2312"/>
     <title>右侧</title>

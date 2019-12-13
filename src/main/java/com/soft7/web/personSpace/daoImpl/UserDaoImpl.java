@@ -97,7 +97,6 @@ public class UserDaoImpl implements UserDAO {
         DataBaseConnection dbc = new DataBaseConnection();
         String sql = "INSERT INTO t_user(account_number,user_name,email,password,active,flag) VALUES(?,?,?,?,?,?)";
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
-
         pstmt.setString(1, user.getAccountNumber());
         pstmt.setString(2, user.getUsername());
         pstmt.setString(3,user.getEmail());

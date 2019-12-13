@@ -2,7 +2,7 @@ package com.soft7.web.personSpace.entity;
 
 import lombok.Data;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @ClassName log
@@ -14,14 +14,16 @@ import java.sql.Date;
 public class Logs {
     private Integer id;
     private String name;
-    private Date logDate;
+    private String title;
     private String content;
+    private Date logDate;
 
     public Logs() {
         this.id = id;
         this.name = name;
-        this.logDate = logDate;
+        this.title = title;
         this.content = content;
+        this.logDate = logDate;
     }
 
     public Integer getId() {
@@ -40,12 +42,12 @@ public class Logs {
         this.name = name;
     }
 
-    public Date getLogDate() {
-        return logDate;
+    public String getTitle() {
+        return title;
     }
 
-    public void setLogDate(Date logDate) {
-        this.logDate = logDate;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {
@@ -56,13 +58,22 @@ public class Logs {
         this.content = content;
     }
 
+    public Date getLogDate() {
+        return logDate;
+    }
+
+    public void setLogDate(Date logDate) {
+        this.logDate = logDate;
+    }
+
     @Override
     public String toString() {
         return "Logs{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", logDate=" + logDate +
+                ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
+                ", logDate=" + logDate +
                 '}';
     }
 }

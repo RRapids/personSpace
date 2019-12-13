@@ -1,43 +1,17 @@
-<%@ page contentType="text/html;charset=gb2312" pageEncoding="gb2312" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.soft7.web.personSpace.entity.Message" %>
+<%@ page import="com.soft7.web.personSpace.factory.DaoFactory" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="com.soft7.web.personSpace.dao.MessageDAO" %>
+<%@ page import="com.soft7.web.personSpace.daoImpl.MessageDAOImpl" %>
+<%@ page import="com.soft7.web.personSpace.util.SplitPage" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=gb2312"/>
-    <title>¡Ù—‘∞Â</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>ÁïôË®ÄÊùø</title>
     <style type="text/css">
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 41px;
-            background: #001e3b;
-            text-align: center;
-            line-height: 41px;
-            font-size: 16px;
-            color: grey;
-            z-index: 100;
-        }
-
-        .topInfo {
-            width: 100%;
-            height: 300px;
-            background-repeat: no-repeat;
-            margin-top: 41px;
-            background-position: -275px top;
-            background-attachment: scroll;
-            background-image: url(http://i.gtimg.cn/qzone/space_item/orig/5/97349_top.jpg);
-            position: relative;
-        }
-
-        .edit {
-            position: absolute;
-            left: 417px;
-            height: 18px;
-            background: #54B3E3;
-            color: white;
-            font-size: 14px;
-            display: none;
-        }
 
         .zoneName {
             position: absolute;
@@ -58,80 +32,12 @@
             font-weight: normal;
         }
 
-        .support {
-            width: 58px;
-            height: 33px;
-            position: absolute;
-            right: 183px;
-            top: 50px;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 18px;
-            color: white;
-            line-height: 30px;
-            cursor: pointer;
-        }
-
-        .num {
-            margin-top: -33px;
-            width: 18px;
-            height: 18px;
-            margin-left: 40px;
-            display: block;
-            margin-bottom: 2px;
-            cursor: pointer;
-        }
-
-        .tips {
-            width: 60px;
-            height: 20px;
-            font-size: 12px;
-            background-color: white;
-            color: black;
-            text-align: center;
-            line-height: 20px;
-            position: absolute;
-            left: 0;
-            right: 0;
-            display: none;
-        }
-
         .top_bottom {
             width: 100%;
             height: 50px;
             background-image: url("http://i.gtimg.cn/qzone/space_item/orig/5/97349_menu_bg.png");
             position: absolute;
             bottom: 0;
-        }
-
-        .photo {
-            width: 128px;
-            height: 128px;
-            position: absolute;
-            left: 185px;
-            top: 96px;
-            padding: 1px;
-        }
-
-        .uploadphoto {
-            width: 100px;
-            height: 20px;
-            font-size: 12px;
-            color: #eee;
-            background-color: rgba(0, 0, 0, 0.8);
-            text-align: center;
-            line-height: 20px;
-            position: absolute;
-            left: 200px;
-            top: 8px;
-            display: none;
-            cursor: pointer;
-        }
-
-        .container {
-            width: 980px;
-            margin: 0 auto;
-            height: 100%;
-            line-height: 50px;
         }
 
         .top_bottom ul.section {
@@ -144,41 +50,28 @@
             width: 858px;
             height: 52px;
             line-height: 52px;
-            font-family: Œ¢»Ì—≈∫⁄, Tohoma;
             font-size: 14px;
-            color: rgb(43, 157, 230);
+            color: #26709A;
             margin: 0 auto;
-            border-bottom: 2px solid rgb(31, 112, 187);
+            border-bottom: 1px solid rgb(221, 221, 221);
         }
 
         .info {
             width: 858px;
-            height: 140px;
-            color: #EDEFF0;
+            height: 180px;
+            color: #26709A;
             margin: 0 auto;
-            line-height: 40px;
-            border-bottom: 2px solid #1f70bb;
-            font-size: 12px;
-        }
-
-        .info {
-            width: 858px;
-            height: 140px;
-            color: #EDEFF0;
-            margin: 0 auto;
-            line-height: 40px;
-            border-bottom: 2px solid #1f70bb;
-            font-size: 12px;
+            line-height: 30px;
+            border-bottom: 1px solid rgb(221, 221, 221);
+            font-size: 16px;
         }
 
         .message {
             width: 858px;
             height: 35px;
             line-height: 35px;
-            color: rgb(238, 238, 238);
-            font-family: Œ¢»Ì—≈∫⁄, Tohoma;
             margin: 0 auto;
-            border-bottom: 2px solid rgb(31, 112, 187);
+            border-bottom: 1px solid rgb(221, 221, 221);
         }
 
         .content {
@@ -186,33 +79,7 @@
             height: 100px;
             word-break: break-all;
             margin: 0 auto;
-            border: 2px solid #1f70bb;
-            border-top: 0px;
-            background-color: #e2e2e2;
-            color: black;
-            text-indent: 2px;
-            font-size: 14px;
-        }
-
-        .content {
-            width: 858px;
-            height: 100px;
-            word-break: break-all;
-            margin: 0 auto;
-            border: 2px solid #1f70bb;
-            border-top: 0px;
-            background-color: #e2e2e2;
-            color: black;
-            text-indent: 2px;
-            font-size: 14px;
-        }
-
-        .content {
-            width: 858px;
-            height: 100px;
-            word-break: break-all;
-            margin: 0 auto;
-            border: 2px solid #1f70bb;
+            border: 2px solid rgb(221, 221, 221);
             border-top: 0px;
             background-color: #e2e2e2;
             color: black;
@@ -227,70 +94,35 @@
             font-size: 14px;
             border-radius: 2px;
             background-color: #46B2EF;
-            border: 1px solid #3686B3;
+            border: 1px solid rgb(221, 221, 221);
             cursor: pointer;
             margin-left: 20px;
             margin-bottom: 50px;
+            border: none;
+            position: relative;
+            left: 790px;
+            top: 15px;
         }
 
         .numofmessage {
             width: 858px;
             height: 20px;
-            color: rgb(237, 239, 240);
             line-height: 20px;
-            font-family: Œ¢»Ì—≈∫⁄;
             margin: 0 auto;
-            border-bottom: 2px solid rgb(31, 112, 187);
-        }
-
-        .numofmessage {
-            width: 858px;
-            height: 20px;
-            color: rgb(237, 239, 240);
-            line-height: 20px;
-            font-family: Œ¢»Ì—≈∫⁄;
-            margin: 0 auto;
-            border-bottom: 2px solid rgb(31, 112, 187);
+            border-bottom: 2px solid rgb(255, 255, 255);
         }
 
         .msgFrame {
             width: 858px;
             height: 2200px;
             margin: 0 auto;
-        }
-
-        .msgFrame {
-            width: 858px;
-            height: 2200px;
-            margin: 0 auto;
-        }
-
-        .content_1 {
-            width: 858px;
-            height: 190px;
-            color: #EDEFF0;
-            margin: 0 auto;
-            border-bottom: 2px solid #1f70bb;
-        }
-
-        .name {
-            width: 50px;
-            height: 50px;
-            margin: 20px 20px;
-            border-radius: 5px;
-        }
-
-        .mainInfo {
-            width: 766px;
-            height: 143px;
-            float: right;
-            margin-top: 20px;
         }
 
         .userId {
             width: 100%;
             height: 20px;
             font-size: 14px;
+            color: #0096E6;
         }
 
         a {
@@ -298,64 +130,120 @@
             text-decoration: none;
         }
 
-        .conInfo {
-            width: 100%;
-            height: 100px;
-            margin-top: 12px;
-            font-size: 12px;
-        }
-
         .time {
             width: 100%;
             height: 20px;
             font-size: 12px;
             margin-bottom: 20px;
-            color: #8AB8E3;
+            text-align: right;
         }
 
         .mainframe {
             width: 900px;
             height: 2703px;
             margin: 20px auto;
-            background-color: #24639D;
+            background-color: rgb(221, 221, 221);
         }
     </style>
+    <script type="text/javascript">
+        function go() {
+            var goPage = document.all.selectPage.value;
+            alert("Êàë‰ª¨Â∞ÜÂéªÈ°µÈù¢:message.jsp?flag=" + goPage);
+            document.open("message.jsp?flag=" + goPage, "_self", "");
+        }
+    </script>
 </head>
-<body>
+
+<body style="background: rgb(255,255,255);">
+
+<%--Â£∞ÊòéSplitPageÁ±ª--%>
+<jsp:useBean id="spage" class="com.soft7.web.personSpace.util.SplitPage" scope="session">
+</jsp:useBean>
+<%--‰øùÁïôtop.jsp--%>
 <div>
     <jsp:include page="Top.jsp" flush="true"></jsp:include>
 </div>
-<div class="header">
-    ª∂”≠¿¥µΩ¡Ù—‘∞Â
-</div>
-<div class="topInfo">
-    <span class="edit">±‡º≠</span>
-    <div class="zoneName">
-        <h2><%=session.getAttribute("username")%>µƒø’º‰</h2>
-        <p> È¿Ô◊‹ «–¥µΩœ≤≥ˆÕ˚Õ‚µƒ∞¯ÕÌ°£</p>
-    </div>
-</div>
-<!-- œ¬√Ê µœ÷¡Ù—‘∞Âπ¶ƒ‹ -->
+
+<!-- ‰∏ãÈù¢ÂÆûÁé∞ÁïôË®ÄÊùøÂäüËÉΩ -->
 <div class="mainframe">
-    <div class="title">¡Ù—‘∞Â</div>
-    <div class="message">÷˜»Àºƒ”Ô</div>
+    <div class="title">ÁïôË®ÄÊùø</div>
+    <div class="message">‰∏ª‰∫∫ÂØÑËØ≠</div>
     <div class="info">
-        ’‚ «÷˜»À¡Ùœ¬µƒºƒ”Ô~
+        Áõ¥Âà∞ÊàëÊâæÂõû‰Ω†<br>ÊâçÁü•ÈÅì‰Ω†‰∏ÄÁõ¥<br>Âú®ÊàëË∫´Âêé<br>Âè™ÊòØÊàë‰∏çÊï¢ÂºÄÂè£<br>ÊÄï‰Ω†‰ªéÊàëË∫´Âêé<br>Ê∫úËµ∞
     </div>
-    <div class="content" contenteditable="true"></div>
-    <input type="button" name="submit" value="∑¢±Ì" class="subbtn">
-    <div class="numofmessage">¡Ù—‘(3)</div>
-    <!-- œ¬√Ê «¡Ù—‘«¯ -->
+    <form action="message.jsp?flag=first" method="post">
+        <textarea class="content" name="messageContent"></textarea>
+        <input type="submit" value="ÂèëË°®" class="subbtn">
+        <%
+            request.setCharacterEncoding("UTF-8");
+            MessageDAO messageDAO = new MessageDAOImpl();
+            String strContent = request.getParameter("messageContent");
+            String flag = request.getParameter("flag");
+            List<Message> messageList = null;
+            HashMap<String, String> tm = new HashMap<>();
+            int totalRows = 0;
+            if (strContent == null || strContent == "" || strContent.equals("null")) {
+                totalRows = messageDAO.getRows(tm);
+                spage.setTotalRows(totalRows);
+                spage.confirmPage(flag);
+                messageList = messageDAO.findAll(spage);
+            } else {
+                Message messages = new Message();
+                messages.setName((String) session.getAttribute("username"));
+                messages.setContent(strContent);
+                messages.setDatetime(new Date());
+                messageDAO.insertMessages(messages);
+                //ÈáçÊñ∞ËÆ∞ÂΩïÁïôË®ÄÊï∞
+                totalRows = messageDAO.getRows(tm);
+                spage.setTotalRows(totalRows);
+                spage.confirmPage(flag);
+                messageList = messageDAO.findAll(spage);
+
+            }
+        %>
+    </form>
+
+    <div class="numofmessage">ÁïôË®Ä</div>
+    <!-- ‰∏ãÈù¢ÊòØÁïôË®ÄÂå∫ -->
     <div class="msgFrame">
-        <div class="content_1">
-            <div class="mainInfo">
-                <div class="userId"><a href="#">zipple</a></div>
-                <div class="conInfo">
-                    –¬ƒÍøÏ¿÷°£
-                </div>
-                <div class="time">2016-12-19 23:46:11</div>
-            </div>
-        </div>
+        <table bgcolor="#dcdcdc" cellpadding="0">
+            <%
+                request.setCharacterEncoding("gb2312");
+                for (Message message : messageList) {%>
+            <tr>
+                <td class="userId"><%=message.getName()%>
+                </td>
+            </tr>
+            <tr>
+                <td class="conInfo"><%=message.getContent()%>
+                </td>
+            </tr>
+            <tr>
+                <td class="time"><%=message.getDatetime()%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <HR style="width: 800px" color="#ffffff">
+                </td>
+            </tr>
+            <%}%>
+            <tr>
+                <td align="right">
+                    <a href="message.jsp?flag=<%=SplitPage.FirstPAGE%>&content=<%=strContent%>">È¶ñÈ°µ </a>
+                    <a href="message.jsp?flag=<%=SplitPage.PreviousPAGE%>&content=<%=strContent%>">‰∏ä‰∏ÄÈ°µ</a>
+                    <a href="message.jsp?flag=<%=SplitPage.NextPAGE%>&content=<%=strContent%>">‰∏ã‰∏ÄÈ°µ</a>
+                    <a href="message.jsp?flag=<%=SplitPage.LastPAGE%>&content=<%=strContent%>">Â∞æÈ°µ</a>
+                    <select id="selectPage" name="gsPage" onchange="go()">
+                        <%for (int i = 1; i < spage.getTotalPages(); i++) {%>
+                        <option value=<%=i%> <%=spage.getCurrentPage() == i ? "selected='selected'" : " "%>>
+                            <%=i%>/<%=spage.getTotalPages()%>
+                        </option>
+                        <%}%>
+                    </select>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 </body>

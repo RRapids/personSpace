@@ -76,7 +76,6 @@
 </button>
 <button class="btn2">创建相册</button>
 <button class="btn3">展示设置</button>
-<label class="label5">已用0.89M容量，开通黄钻获得更大容量</label>
 <img src="images/other/28.png" style="position: relative;top: 700px;left: -160px;"/>
 <img src="images/other/29.png" style="position: relative;top: 370px;left: 105px;width: 80%;"/>
 </body>

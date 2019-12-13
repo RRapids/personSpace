@@ -2,7 +2,6 @@ package com.soft7.web.personSpace.daoImpl;
 
 import com.soft7.web.personSpace.dao.FriendsDAO;
 import com.soft7.web.personSpace.entity.Friends;
-import com.soft7.web.personSpace.entity.User;
 import com.soft7.web.personSpace.util.DataBaseConnection;
 
 import java.sql.PreparedStatement;

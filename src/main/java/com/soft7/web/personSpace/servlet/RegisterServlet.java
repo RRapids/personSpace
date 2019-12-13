@@ -2,7 +2,6 @@ package com.soft7.web.personSpace.servlet;
 
 import com.soft7.web.personSpace.entity.User;
 import com.soft7.web.personSpace.factory.DaoFactory;
-import com.soft7.web.personSpace.util.Mail;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

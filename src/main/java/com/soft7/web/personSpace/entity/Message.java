@@ -2,7 +2,7 @@ package com.soft7.web.personSpace.entity;
 
 import lombok.Data;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @ClassName message
@@ -17,7 +17,7 @@ public class Message {
     private Date datetime;
     private String content;
 
-    public Message(Integer id, String name, Date datetime, String content) {
+    public Message() {
         this.id = id;
         this.name = name;
         this.datetime = datetime;
