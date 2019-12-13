@@ -6,6 +6,7 @@
     <meta charset="GB2312"/>
     <meta http-equiv="content-type" content="text/html; charset=GB2312"/>
     <title>个人空间上部分</title>
+
     <style type="text/css">
         .dropbtn {
             width: 112px;
@@ -76,46 +77,6 @@
             position: relative;
             top: 0px;
             left: -20px;
-        }
-
-        .tupiapn2 {
-            height: 39px;
-            width: 105px;
-            position: relative;
-            top: 0px;
-            left: -27px;
-        }
-
-        .tupiapn3 {
-            height: 39px;
-            width: 103px;
-            position: relative;
-            top: 0px;
-            left: -32px;
-        }
-
-        .tupiapn4 {
-            height: 39px;
-            width: 94px;
-            position: relative;
-            top: 0px;
-            left: -38px;
-        }
-
-        .tupiapn5 {
-            height: 39px;
-            width: 80px;
-            position: relative;
-            top: 0px;
-            left: -44px;
-        }
-
-        .tupiapn6 {
-            height: 39px;
-            width: 79px;
-            position: relative;
-            top: 0px;
-            left: -49px;
         }
 
         .tupiapn7 {
@@ -229,6 +190,13 @@
             top: -14px;
         }
     </style>
+
+    <script>
+        function myChange(num) {
+            document.getElementById("div10").style.backgroundImage = "url(images/bg/" + num + ".jpg)";
+        }
+    </script>
+
 </head>
 <body>
 <%
@@ -304,7 +272,10 @@
     </div>
     <div class="dropdown">
         <button class="dropbtn1">
-            <img src="images/other/皮肤.png" style="position: relative;top: 5px;height: 60%;"/>
+
+            <img src="images/other/皮肤.png" style="position: relative;top: 5px;height: 60%;"
+                 onclick="myChange(2)"/>
+
             装扮
         </button>
         <div class="dropdown-content">
@@ -321,8 +292,8 @@
         <img src="images/other/16.png" class="tupian8"/>
     </div>
 </div>
-<div style="background-image: url(images/other/26.jpg);" class="tupian9">
 
+<div style="background-image: url(images/bg/1.jpg);" id="div10" class="tupian9">
     <%-- 获取头像  --%>
     <a href="changeUserInfo.jsp"><img src="<%=user.getAvatar()%>" class="tupian10"/></a>
     <%--  获取呢称--%>
