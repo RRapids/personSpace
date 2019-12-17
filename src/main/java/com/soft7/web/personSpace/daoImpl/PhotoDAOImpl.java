@@ -48,6 +48,7 @@ public class PhotoDAOImpl implements PhotoDAO {
             photos.setPhotoname(rs.getString("photo_name"));
             photos.setPhotodetails(rs.getString("pho_details"));
             photos.setCreatedate(rs.getDate("create_date"));
+            photos.setUserid(id);
             photoList.add(photos);
         }
         rs.close();
