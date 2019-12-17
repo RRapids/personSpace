@@ -9,11 +9,23 @@
 <html>
   <head>
     <title>测试</title>
+    <script type="text/javascript">
+      function diag()
+      {
+        var str=prompt("随便写点儿啥吧","比如我叫啥");
+        if(str)
+        {
+          alert("您刚输入的是："+ str)
+        }
+      }
+    </script>
   </head>
   <body>
-  <form action="FriendsServlet.do" method="get">
+  <p>
+    <input type="submit" value="Sumit" name="Su1" onclick="diag()" />
+  </p>
+  <form action="login.html" method="get">
     <input type="submit">
   </form>
-  $END$
   </body>
 </html>

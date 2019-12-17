@@ -37,6 +37,11 @@ public class MessageDAOImplTest {
 
     @Test
     public void deleteMessagesById() {
+        try {
+            messageDAO.deleteMessagesById(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

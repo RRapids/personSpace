@@ -33,7 +33,7 @@ public class PictureDAOImpl implements PictureDAO {
     @Override
     public int deletePictureById(int id) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "SELECT * FROM t_pictures WHERE id =?";
+        String sql = "DELETE FROM t_pictures WHERE id= " + id;
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         int n = pstmt.executeUpdate();
         pstmt.close();

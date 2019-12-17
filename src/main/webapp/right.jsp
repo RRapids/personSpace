@@ -36,7 +36,7 @@
         <table border="1" cellpadding="0">
             <%
                 request.setCharacterEncoding("gb2312");
-                List<Friends> friendsList = (List<Friends>) session.getAttribute("friends");
+                List<Friends> friendsList = DaoFactory.getFriendsDAOInstance().getAllFriends();
                 for (Friends friends : friendsList) {%>
             <tr>
                 <td><img src="<%=friends.getAvatar()%>"></td>

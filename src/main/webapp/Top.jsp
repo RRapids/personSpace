@@ -209,7 +209,7 @@
         <span><img src="images/other/9.png" class="tupiapn1"/></span>
     </div>
     <div class="dropdown">
-        <button class="dropbtn">
+        <button class="dropbtn" onclick="window.location.href='AdminCenter.jsp'">
             <img src="images/other/man.png" style="position: relative;top: 4px;height: 60%;"/>
             个人中心
         </button>
@@ -227,7 +227,7 @@
                 </tr>
                 <tr>
                     <td><img src="images/other/相册.png" style="height: 32px;width: 32px;"/></td>
-                    <td><a href="pictures.jsp">相册</a></td>
+                    <td><a href="photo.jsp">相册</a></td>
                 </tr>
                 <tr>
                     <td><img src="images/other/留言板.png" style="height: 32px;width: 32px;"/></td>
@@ -289,13 +289,13 @@
         <input class="input2" type="button" value="搜索"/>
     </div>
     <div class="div2" style="background-color: rgb(31,31,31);">
-        <img src="images/other/16.png" class="tupian8"/>
+        <img src="images/other/16.png" class="tupian8" onclick="window.location.href='login.html'"/>
     </div>
 </div>
 
 <div style="background-image: url(images/bg/1.jpg);" id="div10" class="tupian9">
     <%-- 获取头像  --%>
-    <a href="changeUserInfo.jsp"><img src="<%=user.getAvatar()%>" class="tupian10"/></a>
+    <a href="changeUserAvatar.jsp"><img src="<%=user.getAvatar()%>" class="tupian10"/></a>
     <%--  获取呢称--%>
     <label class="label1"><%=user.getUsername()%>的个人空间</label>
 
@@ -307,7 +307,7 @@
     <ul style="color: #F0F8FF;">
         <li><a href="main.jsp">主页</a></li>
         <li><a href="logger.jsp">日志</a></li>
-        <li><a href="pictures.jsp">相册</a></li>
+        <li><a href="photo.jsp">相册</a></li>
         <li><a href="message.jsp">留言板</a></li>
         <li><a href="#about">说说</a></li>
         <li><a href="userInfo.jsp">个人档</a></li>

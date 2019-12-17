@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDAO {
         pstmt.setString(1, accountNumber);
         ResultSet rs = pstmt.executeQuery();
         User user = new User();
-        while (rs.next()){
+        while (rs.next()) {
             Integer id = rs.getInt("id");
             String userName = rs.getString("user_name");
             String account_number = rs.getString("account_number");
@@ -89,7 +89,6 @@ public class UserDaoImpl implements UserDAO {
         pstmt.close();
         dbc.close();
         return usersList;
-
     }
 
     @Override
@@ -99,7 +98,7 @@ public class UserDaoImpl implements UserDAO {
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         pstmt.setString(1, user.getAccountNumber());
         pstmt.setString(2, user.getUsername());
-        pstmt.setString(3,user.getEmail());
+        pstmt.setString(3, user.getEmail());
         pstmt.setString(4, user.getPassword());
         pstmt.setString(5, user.getActive());
         pstmt.setString(6, user.getFlag());
@@ -112,7 +111,7 @@ public class UserDaoImpl implements UserDAO {
     @Override
     public int deleteUserById(int id) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "select * from t_user where id =?";
+        String sql = "DELETE FROM t_user WHERE id= " + id;
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         int n = pstmt.executeUpdate();
         pstmt.close();
@@ -127,6 +126,24 @@ public class UserDaoImpl implements UserDAO {
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         pstmt.setString(1, user.getAvatar());
         pstmt.setInt(2, user.getId());
+        int n = pstmt.executeUpdate();
+        pstmt.close();
+        dbc.close();
+        return n;
+    }
+
+    @Override
+    public int updateInfo(User user) throws SQLException {
+        DataBaseConnection dbc = new DataBaseConnection();
+        String sql = "UPDATE t_user SET user_name=?,password=?,phone_number=?,email=?,gender=?,age=? WHERE id =?";
+        PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
+        pstmt.setString(1, user.getUsername());
+        pstmt.setString(2, user.getPassword());
+        pstmt.setInt(3, user.getPhoneNumber());
+        pstmt.setString(4, user.getEmail());
+        pstmt.setString(5, user.getGender());
+        pstmt.setInt(6, user.getAge());
+        pstmt.setInt(7, user.getId());
         int n = pstmt.executeUpdate();
         pstmt.close();
         dbc.close();

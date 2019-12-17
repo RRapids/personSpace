@@ -74,7 +74,7 @@
                     <a href="logger.jsp" class="font_top">我的日志</a>
                     <a href="#draft" class="font_top">草稿箱</a>
                     <a href="#bin" class="font_top">回收站</a>
-                    <input name="findLog" type="text" class="txt" placeholder="请输入您要搜索的内容...">
+                    <input name="findLog" type="text" class="txt"<%request.setCharacterEncoding("UTF-8");%> placeholder="请输入您要搜索的内容...">
                     <input type="submit" value="搜索">
                 </td>
             </tr>
@@ -109,8 +109,6 @@
             </table>
         </from>
     </div>
-
-
 </div>
 </body>
 </html>

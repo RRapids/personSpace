@@ -1,3 +1,6 @@
+<%@ page import="com.soft7.web.personSpace.entity.Photos" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.soft7.web.personSpace.factory.DaoFactory" %>
 <%@ page contentType="text/html;charset=gb2312" pageEncoding="gb2312" language="java" %>
 <html>
 <head>
@@ -70,13 +73,39 @@
 <label class="label3">图片</label>
 <label class="label4">视频</label>
 <hr style="position: relative;top: 55px;width: 86%;">
+
 <button class="btn1">
     <img src="images/other/图片.png" style="width: 30px;height: 30px;position: relative;top: 1px;"/>
     <label class="label6" style="position: relative;top: -6px;">相册</label>
 </button>
 <button class="btn2">创建相册</button>
 <button class="btn3">展示设置</button>
-<img src="images/other/28.png" style="position: relative;top: 700px;left: -160px;"/>
-<img src="images/other/29.png" style="position: relative;top: 370px;left: 105px;width: 80%;"/>
+<table border="0" width="95%" cellspacing="0" style="margin-top:10px">
+    <tr height="60">
+        <td align="center"></td>
+    </tr>
+    <%
+        List<Photos> photoList = DaoFactory.getPhotoDAOInstance().selectAllPhotos();
+        if (photoList == null) {
+    %>
+    <tr height="100">
+        <td align="center">
+            <li>博主目前还未上传任何照片！</li>
+        </td>
+    </tr>
+    <%
+        } else {
+            out.print("<tr height='150'>");
+            out.print("<td width='25%' style='padding-left:150px'>");
+            for (Photos photos:photoList){
+                out.print("<a href='PhotoServlet.do?action=list&id=" + photos.getId() + "' target='_blank'><img src='images/bg/1.jpg' border='0' width='120' height='120' title='" + photos.getPhotoname() + "' style='border:1 solid;border-color:black'></a> ");
+                out.println(photos.getPhotoname());
+            }
+            out.println("</td>");
+            out.println("</tr>");
+        }
+    %>
+</table>
+
 </body>
 </html>

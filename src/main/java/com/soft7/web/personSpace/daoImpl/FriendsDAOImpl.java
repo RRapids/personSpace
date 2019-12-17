@@ -34,9 +34,9 @@ public class FriendsDAOImpl implements FriendsDAO {
     @Override
     public int deleteFriendById(int id) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "select * from t_friends where id =?";
+        String sql = "DELETE FROM t_friends WHERE id= " + id;
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
-        int n = pstmt.executeUpdate();
+        int n =pstmt.executeUpdate();
         pstmt.close();
         dbc.close();
         return n;

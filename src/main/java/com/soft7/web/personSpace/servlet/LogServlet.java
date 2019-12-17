@@ -49,16 +49,21 @@ public class LogServlet extends HttpServlet {
 
     //搜素日志
     public void findLog(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
         HttpSession session = request.getSession();
         LogDAO logDAO = new LogDAOImpl();
         String keyWords = request.getParameter("findLog");
-        if (keyWords == null ||keyWords.equals("")){
-            JOptionPane.showMessageDialog(null,"未找到此日志","提示",JOptionPane.ERROR_MESSAGE);
-        }else {
+        if (keyWords == null || keyWords.equals("")) {
+            out.print("<script language=javascript>alert('未找到此日志！！！');" +
+                    "window.location.href='logger.jsp';</script>");
+        } else {
             List<Logs> logsList = new ArrayList<>();
             try {
                 logsList = logDAO.selectLogsLike(keyWords);
-                session.setAttribute("searchLogs",logsList);
+                session.setAttribute("searchLogs", logsList);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

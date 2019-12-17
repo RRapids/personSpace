@@ -26,7 +26,7 @@ public class PhotoDAOImpl implements PhotoDAO {
     @Override
     public int deletePhotoById(int id) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "SELECT * FROM t_photos WHERE id =?";
+        String sql = "DELETE FROM t_photos WHERE id= " + id;
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         int n = pstmt.executeUpdate();
         pstmt.close();

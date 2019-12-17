@@ -22,8 +22,11 @@ public interface UserDAO {
     int insertUser(User user) throws SQLException;
     //删除
     int deleteUserById(int id) throws SQLException;
-    //通过id修改
+    //通过id修改头像
     int updateUser(User user) throws SQLException;
+    //修改个人信息
+    int updateInfo(User user) throws SQLException;
+
     //检查注册用户是否存在
     public boolean checkUser(User user) throws Exception ;
     //查询用户id

@@ -1,5 +1,6 @@
 <%@ page import="com.soft7.web.personSpace.entity.Friends" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.soft7.web.personSpace.factory.DaoFactory" %><%--
   Created by IntelliJ IDEA.
   User: tengf
   Date: 2019/12/12
@@ -24,7 +25,7 @@
         </tr>
         <%
             request.setCharacterEncoding("UTF-8");
-            List<Friends> friendsList = (List<Friends>) session.getAttribute("friends");
+            List<Friends> friendsList = DaoFactory.getFriendsDAOInstance().getAllFriends();
             for (Friends friends : friendsList) {%>
             <tr>
                 <td><img src="<%=friends.getAvatar()%>"></td>

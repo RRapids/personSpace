@@ -34,4 +34,7 @@ public class DaoFactory {
     public static PictureDAO getPictureDAOInstance() {
         return new PictureDAOImpl();
     }
+    public static DongtaiDAO getDongtaiDAOInstance(){
+        return new DongtaiDAOImpl();
+    }
 }

@@ -17,22 +17,21 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet(name = "UploadImageServlet", urlPatterns = "/uploadImage.do")
+@WebServlet(name = "UploadImageServlet", urlPatterns = {"/uploadImage.do"})
 public class UploadImageServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        HttpSession session = req.getSession();
-        PrintWriter out = resp.getWriter();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        PrintWriter out = response.getWriter();
         JspFactory fac = JspFactory.getDefaultFactory();
-        PageContext pageContext = fac.getPageContext(this, req, resp, null, false, JspWriter.NO_BUFFER, true);
+        PageContext pageContext = fac.getPageContext(this, request, response, null, false, JspWriter.NO_BUFFER, true);
         com.jspsmart.upload.File file = null;
         int id = (int) session.getAttribute("id");
         out.println("<html>");
         out.println("<body><center><h3>");
-
         //新建上传对象
         SmartUpload su = new SmartUpload();
         // 上传初始化
@@ -40,10 +39,10 @@ public class UploadImageServlet extends HttpServlet {
         // 限制每个上传文件的最大长度。
         su.setMaxFileSize(20000);
         // 限制总上传数据的长度。
-         su.setTotalMaxFileSize(20000);
+        su.setTotalMaxFileSize(20000);
         //通过扩展名限制设定允许上传的文件,这里仅允许doc,txt文件。
         su.setAllowedFilesList("gif,bmp,jpg");
-         //通过扩展名限制设定禁止上传的文件,禁止上传带有exe,bat,jsp,htm,html扩展名的文件和没有扩展名的文件。
+        //通过扩展名限制设定禁止上传的文件,禁止上传带有exe,bat,jsp,htm,html扩展名的文件和没有扩展名的文件。
         try {
             su.setDeniedFilesList("exe,bat,jsp,htm,html");
         } catch (SQLException e) {
@@ -61,26 +60,25 @@ public class UploadImageServlet extends HttpServlet {
                     continue;
                 }
             }
-
             User user = new User();
             user.setId(id);
             //
-            user.setAvatar("images/face/"+file.getFileName());
+            user.setAvatar("images/face/" + file.getFileName());
             DaoFactory.getUserDAOInstance().updateUser(user);
-            session.setAttribute("image",user.getAvatar());
+            session.setAttribute("image", user.getAvatar());
             out.print("<script language=javascript>alert('头像上传成功！！！');" +
                     "window.location.href='main.jsp';</script>");
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             out.print("<script language=javascript>alert('头像上传失败！！！请检查文件格式和大小！');" +
-                    "window.location.href='changeUserInfo.jsp';</script>");
+                    "window.location.href='changeUserAvatar.jsp';</script>");
         }
         out.println("</h3></center></body></html>");
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
     }
 }

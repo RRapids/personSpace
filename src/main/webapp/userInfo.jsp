@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>个人档</title>
 </head>
 <body background="images/other/InfoBg.jpg">
 
@@ -20,7 +20,7 @@
 %>
 
 <center>
-    <form action="uploadImage.do" method="post" enctype="multipart/form-data">
+    <form>
         <table>
             <br><br>
             <h1><font color="#00008b"><%=username%>的个人信息</font></h1><br>

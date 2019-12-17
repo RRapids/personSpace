@@ -50,4 +50,13 @@ public class FriendsDAOImplTest {
         }
         friendsList.forEach(friends -> System.out.println(friends));
     }
+
+    @Test
+    public void testDeleteFriendById() {
+        try {
+            friendsDAO.deleteFriendById(6);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

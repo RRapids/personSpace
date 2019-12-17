@@ -66,4 +66,21 @@ public class UserDaoImplTest {
     @Test
     public void updateUser() {
     }
+
+    @Test
+    public void updateInfo() {
+        User user = new User();
+        user.setUsername("111");
+        user.setPassword("222");
+        user.setPhoneNumber(333);
+        user.setEmail("444");
+        user.setGender("555");
+        user.setAge(20);
+        user.setId(3);
+        try {
+            userDao.updateInfo(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

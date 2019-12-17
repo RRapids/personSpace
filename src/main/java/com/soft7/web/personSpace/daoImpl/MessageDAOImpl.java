@@ -58,7 +58,7 @@ public class MessageDAOImpl implements MessageDAO {
     @Override
     public int deleteMessagesById(int id) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "select * from t_message where id =?";
+        String sql = "DELETE FROM t_message WHERE id= " + id;
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         int n = pstmt.executeUpdate();
         pstmt.close();
