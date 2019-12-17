@@ -28,7 +28,8 @@
             left: 205px;
             top: 40px;
         }
-        .picture{
+
+        .picture {
             width: 150px;
             height: 150px;
         }
@@ -49,13 +50,25 @@
     </tr>
     <%
         List<Pictures> pictureList = (List<Pictures>) session.getAttribute("picturesList");
-        for (Pictures pictures : pictureList) {%>
-            <tr style="height: 150px">
-                <td style="width: 25%;padding-left: 150px">
-                    <img src="<%=pictures.getPicture()%>" class="picture">
-                </td>
-            </tr>
-    <%}%>
+        if (pictureList == null) {%>
+    <tr height="100">
+        <td align="center">
+            <li>博主目前还未上传任何照片！</li>
+        </td>
+    </tr>
+    <%
+    } else {
+        for (Pictures pictures : pictureList) {
+    %>
+    <tr style="height: 150px">
+        <td style="width: 25%;padding-left: 150px">
+            <img src="<%=pictures.getPicture()%>" class="picture">
+        </td>
+        <td><%=pictures.getPicturename()%></td>
+        <td><%=pictures.getUpdate()%></td>
+    </tr>
+    <%}
+    }%>
 </table>
 </body>
 </html>

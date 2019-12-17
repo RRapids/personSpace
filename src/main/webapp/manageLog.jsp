@@ -21,11 +21,23 @@
             }
         }
     </script>
+    <style type="text/css">
+        .debtn{
+            border-radius: 10px;
+            background-color: brown;
+            color: #FFFFFF;
+            width: 80px;
+            height: 30px;
+            font-size: 1.125rem;
+            border: #EEEEEE;
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <from>
-    <table border="0" cellpadding="10" width="80%">
-        <tr>
+    <table border="1" cellpadding="10" width="80%">
+        <tr  style="font-size: 16px;font-weight: bold;">
             <td>序号</td>
             <td>标题</td>
             <td>作者</td>
@@ -41,12 +53,13 @@
             <td><%=logs.getName()%></td>
             <td><%=logs.getLogDate()%></td>
             <td>
-                <button onclick="del(<%=logs.getId()%>)">删除</button>
+                <button class="delbtn" onclick="del(<%=logs.getId()%>)">删除</button>
             </td>
         </tr>
         <%}%>
     </table>
 </from>
 <a href="AdminCenter.jsp">返回</a>
+</body>
 </body>
 </html>

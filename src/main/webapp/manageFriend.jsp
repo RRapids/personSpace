@@ -42,24 +42,11 @@
         function msgbox(n) {
             document.getElementById('inputbox').style.display = n ? 'block' : 'none';
         }
-
-        function del(friendId) {
-            var fdel = window.confirm("确认要删除吗？");
-            if (fdel) {
-                location.href = "manageServlet.do?manageAction=deleteFriend&friendId=" + friendId;
-            } else {
-                return false;
-            }
-        }
-
-        function add(otherAccount) {
-            location.href = "manageServlet.do?t_manageAction=addFriend&otherAccount=" + otherAccount;
-        }
     </script>
 </head>
 <body>
 <center>
-    <form>
+    <form action="manageServlet.do" method="post">
         <table border="1" cellpadding="10">
             <tr>
                 <td>@</td>
@@ -67,7 +54,7 @@
                 <td>账号</td>
                 <td>删除</td>
                 <td><input type="button" onclick="msgbox(1)" value="添加好友"
-                           style="background-color:#70CCFF;border: none; 80px;height: 35px;"></td>
+                           style="background-color:#70CCFF;border: none; width: 80px;height: 35px;"></td>
             </tr>
 
             <%
@@ -81,18 +68,16 @@
                 <td><%=friends.getAccount()%>
                 </td>
                 <td>
-                    <button style="background-color:#70CCFF;border: none; 80px;height: 35px;"
-                            onclick="del(<%=friends.getId()%>)">删除
-                    </button>
+                    <a href="manageServlet.do?manageAction=deleteFriend&friendId=<%=friends.getId()%>" style="background-color:#70CCFF;border: none;width:80px;height: 35px;">删除</a>
                 </td>
             </tr>
             <%}%>
         </table>
         <div id="inputbox" class="box">
+            <input type="hidden" name="manageAction" value="addFriend">
             <a class="x" onclick="msgbox(0); return false;">关闭</a>
-            <input type="text" placeholder="输入添加账号">
-            <button onclick="add(123456)">添加
-                </button>
+            <input type="text" placeholder="输入添加账号" name="otherAccount">
+            <input type="submit" value="添加">
         </div>
     </form>
     <a href="AdminCenter.jsp" style="list-style: none;color:black;font-size: 18px;">返回</a>

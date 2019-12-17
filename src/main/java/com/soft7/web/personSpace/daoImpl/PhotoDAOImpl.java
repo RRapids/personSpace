@@ -12,11 +12,12 @@ public class PhotoDAOImpl implements PhotoDAO {
     @Override
     public int insertPhoto(Photos photos) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "INSERT INTO t_photos(photo_name,pho_details,create_date,user_id) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO t_photos(photo_name,pho_details,create_date,user_id,photo_cover) VALUES (?,?,?,?,?)";
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         pstmt.setString(1, photos.getPhotoname());
         pstmt.setString(2, photos.getPhotodetails());
         pstmt.setDate(3, new Date(photos.getCreatedate().getTime()));
+        pstmt.setString(4,photos.getPhotoCover());
         int n = pstmt.executeUpdate();
         pstmt.close();
         dbc.close();
@@ -48,6 +49,7 @@ public class PhotoDAOImpl implements PhotoDAO {
             photos.setPhotoname(rs.getString("photo_name"));
             photos.setPhotodetails(rs.getString("pho_details"));
             photos.setCreatedate(rs.getDate("create_date"));
+            photos.setPhotoCover(rs.getString("photo_cover"));
             photos.setUserid(id);
             photoList.add(photos);
         }
@@ -71,6 +73,7 @@ public class PhotoDAOImpl implements PhotoDAO {
             photos.setPhotodetails(rs.getString("pho_details"));
             photos.setCreatedate(rs.getDate("create_date"));
             photos.setUserid(rs.getInt("user_id"));
+            photos.setPhotoCover(rs.getString("photo_cover"));
             photosList.add(photos);
         }
         rs.close();

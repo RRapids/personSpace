@@ -37,11 +37,10 @@ public class manageServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String manageAction = request.getParameter("manageAction");
-        String t_manageAction = request.getParameter("t_manageAction");
         if (manageAction.equals("userManage")) {    //个人信息管理
             this.userManage(request, response);
         }
-        if (t_manageAction.equals("addFriend")) { //增加好友
+        if (manageAction.equals("addFriend")) { //增加好友
             this.addFriendManage(request, response);
         }
         if (manageAction.equals("deleteFriend")) {   //删除好友
@@ -53,7 +52,7 @@ public class manageServlet extends HttpServlet {
         if (manageAction.equals("messageManage")) {  //删除留言
             this.messageManage(request, response);
         }
-        if (manageAction.equals("photoManage")) {
+        if (manageAction.equals("photoManage")) {   //增加相册
             this.photoManage(request, response);
         }
         if (manageAction.equals("addDongTai")) {    //增加动态
@@ -112,8 +111,6 @@ public class manageServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String friendId = request.getParameter("friendId");
-        out.println(friendId);
-        System.out.println(friendId);
         int t_friendId = Integer.parseInt(friendId);
         try {
             DaoFactory.getFriendsDAOInstance().deleteFriendById(t_friendId);
@@ -129,7 +126,6 @@ public class manageServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String otherAccount = request.getParameter("otherAccount");
-        System.out.println(out);
         OtherDAO otherDAO = new OtherDAOImpl();
         Other other = new Other();
         try {
@@ -181,7 +177,13 @@ public class manageServlet extends HttpServlet {
 
     //相册管理
     private void photoManage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        String photoName = request.getParameter("photoName");
+        String details = request.getParameter("details");
+        String photoCover = request.getParameter("photoCover");
+        out.println(photoName);
     }
 
     //增加说说

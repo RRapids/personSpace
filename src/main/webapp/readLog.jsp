@@ -10,9 +10,20 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>查看日志</title>
 </head>
+<style type="text/css">
+
+    .gbtn{
+        background-color: #FFFFFF;
+        color: #606060;
+        font-size: 14px;
+        border: #FFFFFF
+    ;
+    }
+</style>
 <body>
 
 <div>
@@ -20,7 +31,7 @@
 </div>
 
 <div style="background-color: #A68DD9;text-align: center;">
-    <label>查看日志</label>
+    <label style="font-size: 18px;">查看日志</label>
 </div>
 
 <%
@@ -42,8 +53,7 @@
                 <textarea style="font-size: 14px;" name="logContent" rows="20" cols="70"><%=logs.getContent()%></textarea>
             </td>
         </tr>
-        <input type="submit" value="返回" style=" height: 37px;width: 60px; ackground-color: rgb(112,153,222);">
-
+        <input type="submit" class="gbtn" value="< 返回" style=" height: 37px;width: 60px; ackground-color: rgb(112,153,222);">
     </table>
 </form>
 </body>

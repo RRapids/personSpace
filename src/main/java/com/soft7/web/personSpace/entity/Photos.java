@@ -8,23 +8,22 @@ public class Photos {
     private String photodetails;
     private Date createdate;
     private Integer userid;
+    private String photoCover;
 
     public Photos() {
-    }
-
-    public Photos(int id, String photoname, String photodetails, Date createdate, int userid) {
         this.id = id;
         this.photoname = photoname;
         this.photodetails = photodetails;
         this.createdate = createdate;
         this.userid = userid;
+        this.photoCover = photoCover;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,12 +51,20 @@ public class Photos {
         this.createdate = createdate;
     }
 
-    public int getUserid() {
+    public Integer getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(Integer userid) {
         this.userid = userid;
+    }
+
+    public String getPhotoCover() {
+        return photoCover;
+    }
+
+    public void setPhotoCover(String photoCover) {
+        this.photoCover = photoCover;
     }
 
     @Override
@@ -68,6 +75,7 @@ public class Photos {
                 ", photodetails='" + photodetails + '\'' +
                 ", createdate=" + createdate +
                 ", userid=" + userid +
+                ", photoCover='" + photoCover + '\'' +
                 '}';
     }
 }
