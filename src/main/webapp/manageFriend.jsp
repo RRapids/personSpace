@@ -42,30 +42,34 @@
         function msgbox(n) {
             document.getElementById('inputbox').style.display = n ? 'block' : 'none';
         }
+
         function del(friendId) {
             var fdel = window.confirm("确认要删除吗？");
             if (fdel) {
-                location.href="manageServlet.do?manageAction=deleteFriend&friendId="+friendId;
-            }else {
+                location.href = "manageServlet.do?manageAction=deleteFriend&friendId=" + friendId;
+            } else {
                 return false;
             }
         }
+
         function add(otherAccount) {
-            location.href="manageServlet.do?t_manageAction=addFriend&otherAccount="+otherAccount;
+            location.href = "manageServlet.do?t_manageAction=addFriend&otherAccount=" + otherAccount;
         }
     </script>
 </head>
 <body>
 <center>
     <form>
-        <table border="0" cellpadding="10">
+        <table border="1" cellpadding="10">
             <tr>
                 <td>@</td>
                 <td>好友昵称</td>
                 <td>账号</td>
-                <td>-</td>
-                <td><input type="button" onclick="msgbox(1)" value="添加好友"></td>
+                <td>删除</td>
+                <td><input type="button" onclick="msgbox(1)" value="添加好友"
+                           style="background-color:#70CCFF;border: none; 80px;height: 35px;"></td>
             </tr>
+
             <%
                 request.setCharacterEncoding("UTF-8");
                 List<Friends> friendsList = DaoFactory.getFriendsDAOInstance().getAllFriends();
@@ -77,7 +81,9 @@
                 <td><%=friends.getAccount()%>
                 </td>
                 <td>
-                    <button onclick="del(<%=friends.getId()%>)">删除</button>
+                    <button style="background-color:#70CCFF;border: none; 80px;height: 35px;"
+                            onclick="del(<%=friends.getId()%>)">删除
+                    </button>
                 </td>
             </tr>
             <%}%>
@@ -85,10 +91,11 @@
         <div id="inputbox" class="box">
             <a class="x" onclick="msgbox(0); return false;">关闭</a>
             <input type="text" placeholder="输入添加账号">
-            <button onclick="add(123456)">添加<button>
+            <button onclick="add(123456)">添加
+                </button>
         </div>
     </form>
-    <a href="AdminCenter.jsp">返回</a>
+    <a href="AdminCenter.jsp" style="list-style: none;color:black;font-size: 18px;">返回</a>
 </center>
 </body>
 </html>

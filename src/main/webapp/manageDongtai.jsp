@@ -32,7 +32,7 @@
 </head>
 <body>
 <center>
-    <a href="AdminCenter.jsp">【返回】</a>
+    <a href="AdminCenter.jsp" style="text-decoration: none;"><label style="position: relative;  left: 730px;font-size: 18px;color: #000000;"> 【返回】</label></a>
     <hr>
     <%
         request.setCharacterEncoding("UTF-8");
@@ -62,7 +62,7 @@
     <div>
         <img src="<%=dongtai.getContentImg()%>" class="contentImg">
     </div>
-    <button onclick="del(<%=dongtai.getId()%>)">删除</button>
+    <button onclick="del(<%=dongtai.getId()%>)" style="position: relative;top: 6px; background-color:#70CCFF;border: none; width:80px ;height: 35px;">删除</button>
     <hr>
     <%}%>
 </center>
