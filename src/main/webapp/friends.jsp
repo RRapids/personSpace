@@ -11,6 +11,12 @@
 <html>
 <head>
     <title>好友</title>
+    <style type="text/css">
+        .avatar{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
 <div>
@@ -28,7 +34,7 @@
             List<Friends> friendsList = DaoFactory.getFriendsDAOInstance().getAllFriends();
             for (Friends friends : friendsList) {%>
             <tr>
-                <td><img src="<%=friends.getAvatar()%>"></td>
+                <td><img class="avatar" src="<%=friends.getAvatar()%>"></td>
                 <td>昵称：<%=friends.getName()%></td>
                 <td>账号：<%=friends.getAccount()%></td>
             </tr>

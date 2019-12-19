@@ -46,14 +46,11 @@ public class manageServlet extends HttpServlet {
         if (manageAction.equals("deleteFriend")) {   //删除好友
             this.deleteFriendManage(request, response);
         }
-        if (manageAction.equals("logManage")) {     //删除日志
+        if (manageAction.equals("deleteLog")) {     //删除日志
             this.logManage(request, response);
         }
         if (manageAction.equals("messageManage")) {  //删除留言
             this.messageManage(request, response);
-        }
-        if (manageAction.equals("photoManage")) {   //增加相册
-            this.photoManage(request, response);
         }
         if (manageAction.equals("addDongTai")) {    //增加动态
             this.addDongTaiManage(request, response);
@@ -175,32 +172,30 @@ public class manageServlet extends HttpServlet {
         request.getRequestDispatcher("manageMessage.jsp").forward(request, response);
     }
 
-    //相册管理
-    private void photoManage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //增加说说
+    private void addDongTaiManage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String photoName = request.getParameter("photoName");
-        String details = request.getParameter("details");
-        String photoCover = request.getParameter("photoCover");
-        out.println(photoName);
-    }
-
-    //增加说说
-    private void addDongTaiManage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //
         String d_content = request.getParameter("dongTaiContent");
+        String dongTaiImg = request.getParameter("dongTaiImg");
         Dongtai dongtai = new Dongtai();
         dongtai.setContent(d_content);
-        dongtai.setContentImg("images/bg/3.jpg");
+        dongtai.setContentImg("images/picture/"+dongTaiImg);
         dongtai.setDate(new Date());
         DongtaiDAO dongtaiDAO = new DongtaiDAOImpl();
         try {
-            dongtaiDAO.insertDontai(dongtai);
-            System.out.println("1");
+            int n = dongtaiDAO.insertDontai(dongtai);
+            if (n == 1) {
+                request.getRequestDispatcher("main.jsp").forward(request, response);
+            }else {
+                out.print("<script language=javascript>alert('添加动态失败！请重试！');" +
+                        "window.location.href='main.jsp';</script>");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("main.jsp").forward(request, response);
     }
 
     //删除说说

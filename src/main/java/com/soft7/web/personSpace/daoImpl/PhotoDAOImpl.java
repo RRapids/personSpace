@@ -17,7 +17,8 @@ public class PhotoDAOImpl implements PhotoDAO {
         pstmt.setString(1, photos.getPhotoname());
         pstmt.setString(2, photos.getPhotodetails());
         pstmt.setDate(3, new Date(photos.getCreatedate().getTime()));
-        pstmt.setString(4,photos.getPhotoCover());
+        pstmt.setInt(4,photos.getUserid());
+        pstmt.setString(5,photos.getPhotoCover());
         int n = pstmt.executeUpdate();
         pstmt.close();
         dbc.close();

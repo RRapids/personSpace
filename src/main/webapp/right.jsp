@@ -22,6 +22,10 @@
             top: 400px;
             right: 200px;
         }
+        .avatar{
+            width: 100px;
+            height: 100px;
+        }
     </style>
 </head>
 
@@ -33,16 +37,16 @@
         </td>
     </tr>
     <form>
-        <table border="1" cellpadding="0">
+        <table border="0" cellpadding="0">
             <%
                 request.setCharacterEncoding("gb2312");
                 List<Friends> friendsList = DaoFactory.getFriendsDAOInstance().getAllFriends();
                 for (Friends friends : friendsList) {%>
             <tr>
-                <td><img src="<%=friends.getAvatar()%>"></td>
+                <td><img class="avatar" src="<%=friends.getAvatar()%>"></td>
             </tr>
             <tr>
-                <td>Í«≥∆£∫<%=friends.getName()%>
+                <td><%=friends.getName()%>
                 </td>
                 <td>’À∫≈£∫<%=friends.getAccount()%>
                 </td>

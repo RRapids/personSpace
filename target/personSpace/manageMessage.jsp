@@ -36,6 +36,8 @@
     </style>
 </head>
 <body>
+<a href="AdminCenter.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
+<hr>
 <from>
     <table border="1" cellpadding="10" width="80%">
         <tr style="font-size: 16px;font-weight: bold;">
@@ -68,6 +70,6 @@
         <%}%>
     </table>
 </from>
-<a href="AdminCenter.jsp">返回</a>
+
 </body>
 </html>

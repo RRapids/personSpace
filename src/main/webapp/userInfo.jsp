@@ -10,6 +10,13 @@
 <html>
 <head>
     <title>个人档</title>
+    <style type="text/css">
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body background="images/other/InfoBg.jpg">
 
@@ -18,13 +25,14 @@
     String username = (String) session.getAttribute("username");
     User user = DaoFactory.getUserDAOInstance().getUserByAccount(account);
 %>
-
+<a href="main.jsp" style="font-size: 22px;text-decoration: none;color: azure;" >【前台首页】</a>
+<hr>
 <center>
     <form>
         <table>
             <br><br>
-            <h1><font color="#00008b"><%=username%>的个人信息</font></h1><br>
-            <span><img src="<%=user.getAvatar()%>"></span>
+            <h1><font color="#00008b"><%=user.getUsername()%>的个人信息</font></h1><br>
+            <span><img class="avatar" src="<%=user.getAvatar()%>"></span>
             <h2>用户名:<%=username%></h2>
             <h3>账号：<%=user.getAccountNumber()%></h3>
             <h3>手机号：<%=user.getPhoneNumber()%></h3>

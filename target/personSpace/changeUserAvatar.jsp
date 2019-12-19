@@ -20,13 +20,14 @@
     User user = DaoFactory.getUserDAOInstance().getUserByAccount(account);
 
 %>
-
+<a href="main.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
+<hr>
 <center>
     <form action="uploadImage.do" method="post" enctype="multipart/form-data">
         <table>
             <br><br>
-            <span><img src="<%=user.getAvatar()%>"></span>
-            <h2>用户名:<%=username%>
+            <span><img width="110px" height="110px" src="<%=user.getAvatar()%>"></span>
+            <h2>用户名:<%=user.getUsername()%>
             </h2>
             <h3>账号：<%=user.getAccountNumber()%>
             </h3>

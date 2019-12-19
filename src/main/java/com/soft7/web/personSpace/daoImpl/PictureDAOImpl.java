@@ -16,13 +16,13 @@ public class PictureDAOImpl implements PictureDAO {
     @Override
     public int insertPicture(Pictures pictures) throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "INSERT INTO t_pictures(picture_name,picture,photo_id,pic_details,update,user_id) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO t_pictures(picture_name,picture,photo_id,pic_details,updateTime,user_id) VALUES (?,?,?,?,?,?)";
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         pstmt.setString(1, pictures.getPicturename());
         pstmt.setString(2, pictures.getPicture());
         pstmt.setInt(3,pictures.getPhotoid());
         pstmt.setString(4,pictures.getPicturesdetails());
-        pstmt.setDate(5, new Date(pictures.getUpdate().getTime()));
+        pstmt.setDate(5,new Date(pictures.getUpdate().getTime()));
         pstmt.setInt(6,pictures.getUserid());
         int n = pstmt.executeUpdate();
         pstmt.close();
@@ -56,7 +56,7 @@ public class PictureDAOImpl implements PictureDAO {
             pictures.setPicture(rs.getString("picture"));
             pictures.setPhotoid(rs.getInt("photo_id"));
             pictures.setPicturesdetails(rs.getString("pic_details"));
-            pictures.setUpdate(rs.getDate("update"));
+            pictures.setUpdate(rs.getDate("updateTime"));
             pictures.setUserid(rs.getInt("user_id"));
             picturesList.add(pictures);
         }

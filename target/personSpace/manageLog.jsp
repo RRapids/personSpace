@@ -15,10 +15,13 @@
         function del(logId) {
             var fdel = window.confirm("确认要删除吗？");
             if (fdel) {
-                location.href="manageServlet.do?manageAction=logManage&logId="+logId;
+                location.href="manageServlet.do?manageAction=deleteLog&logId="+logId;
             }else {
                 return false;
             }
+        }
+        function modify() {
+            location.href="manageServlet.do?manageAction=modifyLog&logId="+logId;
         }
     </script>
     <style type="text/css">
@@ -35,6 +38,8 @@
     </style>
 </head>
 <body>
+<a href="AdminCenter.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
+<hr>
 <from>
     <table border="1" cellpadding="10" width="80%">
         <tr  style="font-size: 16px;font-weight: bold;">
@@ -54,12 +59,12 @@
             <td><%=logs.getLogDate()%></td>
             <td>
                 <button class="delbtn" onclick="del(<%=logs.getId()%>)">删除</button>
+<%--                <button class="debtn" onclick="modify(<%=logs.getId()%>)">修改</button>--%>
             </td>
         </tr>
         <%}%>
     </table>
 </from>
-<a href="AdminCenter.jsp">返回</a>
 </body>
 </body>
 </html>

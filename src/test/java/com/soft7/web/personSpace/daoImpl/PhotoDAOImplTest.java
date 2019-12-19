@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -29,6 +30,22 @@ private PhotoDAO photoDAO = DaoFactory.getPhotoDAOInstance();
         try {
             List photosList = photoDAO.selectAllPhotos();
             System.out.println(photosList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void insertPhoto() {
+        Photos photos = new Photos();
+        photos.setPhotoname("photoName");
+        photos.setPhotodetails("details");
+        photos.setPhotoCover("photoCover");
+        photos.setUserid(1);
+        photos.setCreatedate(new Date());
+        try {
+           int n = photoDAO.insertPhoto(photos);
+            System.out.println(n);
         } catch (SQLException e) {
             e.printStackTrace();
         }

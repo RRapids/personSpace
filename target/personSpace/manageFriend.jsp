@@ -36,21 +36,22 @@
             margin-top: 18px;
         }
     </style>
-
-    <%--      点击按钮打开/关闭对话框--%>
+    <%--点击按钮打开/关闭对话框--%>
     <script type="text/javascript">
         function msgbox(n) {
             document.getElementById('inputbox').style.display = n ? 'block' : 'none';
         }
-        //
-        // function add() {
-        //     var account = document.getElementById("account");
-        //     location.href = "manageServlet.do?manageAction=addFriend&otherAccount="+account.value;
-        // }
-
     </script>
+    <style type="text/css">
+        .avatar{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
+<a href="AdminCenter.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
+<hr>
 <center>
     <form action="manageServlet.do" method="post">
         <table border="1" cellpadding="10">
@@ -68,7 +69,7 @@
                 List<Friends> friendsList = DaoFactory.getFriendsDAOInstance().getAllFriends();
                 for (Friends friends : friendsList) {%>
             <tr>
-                <td><img src="<%=friends.getAvatar()%>"></td>
+                <td><img class="avatar" src="<%=friends.getAvatar()%>"></td>
                 <td><%=friends.getName()%>
                 </td>
                 <td><%=friends.getAccount()%>
@@ -84,10 +85,8 @@
             <a class="x" onclick="msgbox(0); return false;">关闭</a>
             <input type="text" placeholder="输入添加账号" name="otherAccount">
             <input type="submit" value="添加">
-<%--            <button onclick="add()">添加</button>--%>
         </div>
     </form>
-    <a href="AdminCenter.jsp" style="list-style: none;color:black;font-size: 18px;">返回</a>
 </center>
 </body>
 </html>

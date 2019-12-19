@@ -13,8 +13,13 @@
     <title>说说管理</title>
     <style type="text/css">
         .contentImg {
-            width: 200px;
-            height: 200px;
+            width: 500px;
+            height: 350px;
+        }
+        .avatar{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
         }
     </style>
 
@@ -32,7 +37,7 @@
 </head>
 <body>
 <center>
-    <a href="AdminCenter.jsp" style="text-decoration: none;"><label style="position: relative;  left: 730px;font-size: 18px;color: #000000;"> 【返回】</label></a>
+    <a href="AdminCenter.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
     <hr>
     <%
         request.setCharacterEncoding("UTF-8");
@@ -42,7 +47,7 @@
         <table>
             <tr>
                 <td>
-                    <img src="<%=session.getAttribute("avatar")%>">
+                    <img class="avatar" src="<%=session.getAttribute("avatar")%>">
                 </td>
                 <td>
                     <p><%=session.getAttribute("username")%>
@@ -55,9 +60,8 @@
             </tr>
         </table>
     </div>
-    <div>
-        <p><%=dongtai.getContent()%>
-        </p>
+    <div style="width: 500px">
+        <p><%=dongtai.getContent()%></p>
     </div>
     <div>
         <img src="<%=dongtai.getContentImg()%>" class="contentImg">

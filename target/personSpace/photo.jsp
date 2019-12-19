@@ -1,12 +1,12 @@
 <%@ page import="com.soft7.web.personSpace.entity.Photos" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.soft7.web.personSpace.factory.DaoFactory" %>
-<%@ page contentType="text/html;charset=gb2312" pageEncoding="gb2312" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=gb2312"/>
-    <title>���˿ռ���Ჿ��</title>
-    <style>
+    <title>个人空间相册部分</title>
+    <style type="text/css">
         .label2 {
             position: relative;
             left: 105px;
@@ -51,7 +51,7 @@
             margin: 0 auto;
             padding: 28px;
             border: 1px #111 solid;
-            display: none; /* Ĭ�϶Ի������� */
+            display: none; /* 默认对话框隐藏 */
         }
 
         .box.show {
@@ -81,27 +81,27 @@
 <div>
     <jsp:include page="Top.jsp" flush="true"></jsp:include>
 </div>
-<label class="label2">���</label>
-<label class="label3">ͼƬ</label>
-<label class="label4">��Ƶ</label>
+<label class="label2">相册</label>
+<label class="label3">图片</label>
+<label class="label4">视频</label>
 <hr style="position: relative;top: 55px;width: 86%;">
 
 <button class="btn1">
-    <img src="images/other/ͼƬ.png" style="width: 30px;height: 30px;position: relative;top: 1px;"/>
-    <label class="label6" style="position: relative;top: -6px;">���</label>
+    <img src="images/other/图片.png" style="width: 30px;height: 30px;position: relative;top: 1px;"/>
+    <label class="label6" style="position: relative;top: -6px;">相册</label>
 </button>
-<button class="btn2" onclick="msgbox(1)">�������</button>
+<button class="btn2" onclick="msgbox(1)">创建相册</button>
 <table border="0" width="95%" cellspacing="0" style="margin-top:10px">
     <tr height="60">
         <td align="center"></td>
     </tr>
     <%
         List<Photos> photoList = DaoFactory.getPhotoDAOInstance().selectAllPhotos();
-        if (photoList == null) {
+        if (photoList == null&photoList.equals("")) {
     %>
     <tr height="100">
         <td align="center">
-            <li>����Ŀǰ��δ�ϴ��κ���Ƭ��</li>
+            <li>博主目前还未上传任何照片！</li>
         </td>
     </tr>
     <%
@@ -118,16 +118,17 @@
     %>
 </table>
 <div id="inputbox" class="box">
-    <form action="manageServlet.do" method="post">
-        <input type="hidden" name="manageAction" value="photoManage">
-        <a class="x" onclick="msgbox(0); return false;">�ر�</a>
-        <input type="text" placeholder="�����" name="photoName">
-        <input type="text" placeholder="����" name="details">
+    <form action="PhotoServlet.do" method="post">
+        <meta charset="utf-8">
+        <input type="hidden" name="action" value="addPhoto">
+        <a class="x" onclick="msgbox(0); return false;">关闭</a>
+        <input type="text" placeholder="相册名" name="photoName">
+        <input type="text" placeholder="描述" name="details">
         <br>
-        <a>ѡ�����</a>
-        <input type="file" name="coverFile" value="D:\javastudy\project\personSpace\src\main\webapp\images\cover">
+        <a>选择封面</a>
+        <input type="file" name="photoCover" value="D:\javastudy\project\personSpace\src\main\webapp\images\cover">
         <br>
-        <input type="submit" value="����">
+        <input type="submit" value="创建">
     </form>
 </div>
 </body>

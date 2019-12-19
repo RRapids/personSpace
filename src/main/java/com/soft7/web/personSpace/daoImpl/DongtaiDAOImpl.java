@@ -22,7 +22,7 @@ public class DongtaiDAOImpl implements DongtaiDAO {
     @Override
     public List<Dongtai> selectAllDongtai() throws SQLException {
         DataBaseConnection dbc = new DataBaseConnection();
-        String sql = "SELECT * FROM t_dongtai";
+        String sql = "SELECT * FROM t_dongtai ORDER BY id DESC";
         PreparedStatement pstmt = dbc.getConnection().prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
         List<Dongtai> dongtaiList = new ArrayList<>();

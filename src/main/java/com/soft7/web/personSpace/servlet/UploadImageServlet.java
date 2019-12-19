@@ -37,9 +37,9 @@ public class UploadImageServlet extends HttpServlet {
         // 上传初始化
         su.initialize(pageContext);
         // 限制每个上传文件的最大长度。
-        su.setMaxFileSize(20000);
+        su.setMaxFileSize(200000);
         // 限制总上传数据的长度。
-        su.setTotalMaxFileSize(20000);
+        su.setTotalMaxFileSize(200000);
         //通过扩展名限制设定允许上传的文件,这里仅允许doc,txt文件。
         su.setAllowedFilesList("gif,bmp,jpg");
         //通过扩展名限制设定禁止上传的文件,禁止上传带有exe,bat,jsp,htm,html扩展名的文件和没有扩展名的文件。

@@ -152,7 +152,7 @@
         .label1 {
             position: relative;
             top: 140px;
-            left: 260px;
+            left: 280px;
         }
 
         .div3 {
@@ -199,6 +199,7 @@
 
 </head>
 <body>
+
 <%
     String account = (String) session.getAttribute("account");
     User user = DaoFactory.getUserDAOInstance().getUserByAccount(account);
@@ -309,7 +310,7 @@
         <li><a href="logger.jsp">日志</a></li>
         <li><a href="photo.jsp">相册</a></li>
         <li><a href="message.jsp">留言板</a></li>
-        <li><a href="#about">说说</a></li>
+        <li><a href="manageDongtai.jsp">说说</a></li>
         <li><a href="userInfo.jsp">个人档</a></li>
         <li><a href="https://y.qq.com/">音乐</a></li>
         <li><a href="http://www.4399.com/">更多</a></li>

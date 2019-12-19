@@ -15,14 +15,16 @@
         top: 20px;
         left: 435px;
         width: 600px;
-        height: 120px;
+        height: 140px;
         border-radius: 2px;
         border: 1px solid #EEEEEE;
     }
 
-    .input {
-
+    .button {
+        background: rgb(255, 255, 255);
+        height: 30px;
     }
+
 </style>
 <body>
 
@@ -32,12 +34,16 @@
             <table>
                 <input type="hidden" name="manageAction" value="addDongTai">
                 <tr>
-                    <textarea cols="76" rows="4" name="dongTaiContent" style="position: relative;top:0px;"></textarea>
+                    <td>
+                        <textarea placeholder="说点什么吧" cols="76" rows="6" name="dongTaiContent"
+                                  style="position: relative;top:0px;"></textarea>
+                    </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" value="提交"/>
-                        <input type="reset" value="重置">
+                        <input type="submit" value="发表" class="button"/>
+                        <input type="file" name="dongTaiImg"
+                               value="D:\javastudy\project\personSpace\src\main\webapp\images\picture">
                     </td>
                 </tr>
             </table>

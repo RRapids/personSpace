@@ -1,5 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.soft7.web.personSpace.entity.Pictures" %><%--
+<%@ page import="com.soft7.web.personSpace.entity.Pictures" %>
+<%@ page import="com.soft7.web.personSpace.servlet.PhotoServlet" %>
+<%@ page import="com.soft7.web.personSpace.factory.DaoFactory" %><%--
   Created by IntelliJ IDEA.
   User: tengf
   Date: 2019/12/16
@@ -30,18 +32,45 @@
         }
 
         .picture {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
+        }
+        .box {
+            width: 20%;
+            margin: 0 auto;
+            padding: 28px;
+            border: 1px #111 solid;
+            display: none; /* 默认对话框隐藏 */
         }
 
+        .box.show {
+            display: block;
+        }
+
+        .box .x {
+            font-size: 15px;
+            text-align: right;
+            display: block;
+        }
+
+        .box input {
+            width: 80%;
+            font-size: 15px;
+            margin-top: 18px;
+        }
     </style>
+    <script type="text/javascript">
+        function msgbox(n) {
+            document.getElementById('inputbox').style.display = n ? 'block' : 'none';
+        }
+    </script>
 </head>
 <body>
 <div>
     <jsp:include page="Top.jsp" flush="true"></jsp:include>
 </div>
-<a class="label2" href="photo.jsp">相册</a>
-<label class="label3">图片</label>
+<a class="label2" href="photo.jsp" onclick="window.close()">相册</a>
+<button class="label3" onclick="msgbox(1)">上传照片</button>
 <label class="label4">视频</label>
 <hr style="position: relative;top: 55px;width: 86%;">
 <table border="0" width="95%" cellspacing="0" style="margin-top:10px">
@@ -49,7 +78,9 @@
         <td align="center"></td>
     </tr>
     <%
-        List<Pictures> pictureList = (List<Pictures>) session.getAttribute("picturesList");
+        String photoId = (String) session.getAttribute("photoId");
+        int t_photoId = Integer.parseInt(photoId);
+        List<Pictures> pictureList = DaoFactory.getPictureDAOInstance().getPicturesByPhoto(t_photoId);
         if (pictureList == null) {%>
     <tr height="100">
         <td align="center">
@@ -65,10 +96,25 @@
             <img src="<%=pictures.getPicture()%>" class="picture">
         </td>
         <td><%=pictures.getPicturename()%></td>
+        <td><%=pictures.getPicturesdetails()%></td>
         <td><%=pictures.getUpdate()%></td>
     </tr>
     <%}
     }%>
 </table>
+<div id="inputbox" class="box">
+    <form action="PhotoServlet.do" method="post">
+        <meta charset="utf-8">
+        <input type="hidden" name="action" value="addPicture">
+        <a class="x" onclick="msgbox(0); return false;">关闭</a>
+        <input type="text" placeholder="标题" name="pictureName">
+        <input type="text" placeholder="描述" name="pictureDtails">
+        <br>
+        <a>选择照片</a>
+        <input type="file" name="pictureFile" value="D:\javastudy\project\personSpace\src\main\webapp\images\picture">
+        <br>
+        <input type="submit" value="上传">
+    </form>
+</div>
 </body>
 </html>

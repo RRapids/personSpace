@@ -21,6 +21,9 @@
     </script>
   </head>
   <body>
+  <audio autoplay="autoplay">
+    <source src="C:\Users\tengf\Music\bgmusic.mp3">
+  </audio>
   <p>
     <input type="submit" value="Sumit" name="Su1" onclick="diag()" />
   </p>

@@ -8,14 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>后台管理系统</title>
 </head>
 <body>
 <center>
     <table  style="width: 1540px;">
         <tr>
             <td  align="center" style="height: 55px; background-color: #70CCFF;" class="word_white ">
-                <a href="main.jsp" style="font-size: 22px;text-decoration: none;color: azure;" >【前台首页】</a>
+                <a href="main.jsp" style="font-size: 20px;text-decoration: none;color: azure;" >【前台首页】</a>
                 <a href="login.html" style="font-size: 20px;text-decoration: none;color: azure;" >【退出登录】</a>
             </td>
             <td width="2%" align="right" >&nbsp;</td>
@@ -37,7 +37,7 @@
                         <td style="height: 40px;"><a href="manageMessage.jsp" style="text-decoration: none;color: dimgray;font-size: 20px;position: relative;top: 30px;">留言管理</a></td>
                     </tr>
                     <tr>
-                        <td style="height: 40px;"><a style="text-decoration: none;color: dimgray;font-size: 20px;position: relative;top: 30px;">相册管理</a></td>
+                        <td style="height: 40px;"><a href="managePhoto.jsp" style="text-decoration: none;color: dimgray;font-size: 20px;position: relative;top: 30px;">相册管理</a></td>
                     </tr>
                     <tr>
                         <td style="height: 40px;"><a href="manageDongtai.jsp" style="text-decoration: none;color: dimgray;font-size: 20px;position: relative;top: 30px;">说说管理</a></td>
