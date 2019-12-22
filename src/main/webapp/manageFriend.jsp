@@ -42,6 +42,7 @@
             document.getElementById('inputbox').style.display = n ? 'block' : 'none';
         }
     </script>
+
     <style type="text/css">
         .avatar{
             width: 100px;
@@ -49,7 +50,7 @@
         }
     </style>
 </head>
-<body>
+<body background="images/other/InfoBg.jpg">
 <a href="AdminCenter.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
 <hr>
 <center>
@@ -75,7 +76,7 @@
                 <td><%=friends.getAccount()%>
                 </td>
                 <td>
-                    <a href="manageServlet.do?manageAction=deleteFriend&friendId=<%=friends.getId()%>" style="background-color:#70CCFF;border: none;width:80px;height: 35px;">删除</a>
+                    <a href="manageServlet.do?manageAction=deleteFriend&friendId=<%=friends.getId()%>" style="color:#70CCFF;border: none;width:80px;height: 35px;">删除</a>
                 </td>
             </tr>
             <%}%>

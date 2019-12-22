@@ -11,9 +11,11 @@
 <head>
     <title>修改个人信息</title>
     <style type="text/css">
-        input{
+        input {
             width: 250px;
+            border: 0;
         }
+
         .avatar {
             width: 70px;
             height: 70px;
@@ -28,7 +30,7 @@
     String username = (String) session.getAttribute("username");
     User user = DaoFactory.getUserDAOInstance().getUserByAccount(account);
 %>
-<a href="AdminCenter.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
+<a href="AdminCenter.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;">【返回上一级】</a>
 <hr>
 <center>
     <form action="manageServlet.do" method="post">
@@ -42,42 +44,49 @@
             </tr>
             <tr>
                 <td>
-                    <h3>用户名:<%=username%></h3>
+                    <h3>用户名:<%=username%>
+                    </h3>
                     <input type="text" name="changeName">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h4>账号：<%=user.getAccountNumber()%></h4>
+                    <h4>账号：<%=user.getAccountNumber()%>
+                    </h4>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h4>密码：<%=user.getPassword()%></h4>
+                    <h4>密码：<%=user.getPassword()%>
+                    </h4>
                     <input type="text" name="changePassword">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h4>手机号：<%=user.getPhoneNumber()%></h4>
+                    <h4>手机号：<%=user.getPhoneNumber()%>
+                    </h4>
                     <input type="text" name="changePhone">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h4>邮箱：<%=user.getEmail()%></h4>
+                    <h4>邮箱：<%=user.getEmail()%>
+                    </h4>
                     <input type="text" name="changeEmail">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h4>性别：<%=user.getGender()%></h4>
+                    <h4>性别：<%=user.getGender()%>
+                    </h4>
                     <input type="text" name="changeGender">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h4>年龄：<%=user.getAge()%></h4>
+                    <h4>年龄：<%=user.getAge()%>
+                    </h4>
                     <input type="text" name="changeAge">
                 </td>
             </tr>

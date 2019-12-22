@@ -22,9 +22,9 @@
             top: 400px;
             right: 200px;
         }
-        .avatar{
-            width: 100px;
-            height: 100px;
+        .friendAvatar{
+            width: 55px;
+            height: 55px;
         }
     </style>
 </head>
@@ -43,7 +43,7 @@
                 List<Friends> friendsList = DaoFactory.getFriendsDAOInstance().getAllFriends();
                 for (Friends friends : friendsList) {%>
             <tr>
-                <td><img class="avatar" src="<%=friends.getAvatar()%>"></td>
+                <td><img class="friendAvatar" src="<%=friends.getAvatar()%>"></td>
             </tr>
             <tr>
                 <td><%=friends.getName()%>

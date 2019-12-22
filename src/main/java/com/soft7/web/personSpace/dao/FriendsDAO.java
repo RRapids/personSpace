@@ -13,4 +13,6 @@ public interface FriendsDAO {
     Friends getFriendById(int id) throws SQLException;
 
     List<Friends> getAllFriends() throws SQLException;
+    //查询重复记录
+
 }

@@ -275,7 +275,7 @@
         <button class="dropbtn1">
 
             <img src="images/other/皮肤.png" style="position: relative;top: 5px;height: 60%;"
-                 onclick="myChange(2)"/>
+                 onclick="myChange(5)"/>
 
             装扮
         </button>
@@ -285,10 +285,12 @@
     <div class="dropdown">
         <span><img src="images/other/15.png" class="tupiapn7"/></span>
     </div>
+
     <div class="div1" style="background-color: rgb(31,31,31);">
-        <input class="input1" type="text" value="用户/动态"/>
+        <input class="input1" type="text">
         <input class="input2" type="button" value="搜索"/>
     </div>
+
     <div class="div2" style="background-color: rgb(31,31,31);">
         <img src="images/other/16.png" class="tupian8" onclick="window.location.href='login.html'"/>
     </div>

@@ -1,6 +1,7 @@
 package com.soft7.web.personSpace.servlet;
 
 import com.soft7.web.personSpace.dao.DongtaiDAO;
+import com.soft7.web.personSpace.dao.FriendsDAO;
 import com.soft7.web.personSpace.dao.OtherDAO;
 import com.soft7.web.personSpace.daoImpl.DongtaiDAOImpl;
 import com.soft7.web.personSpace.daoImpl.OtherDAOImpl;
@@ -30,6 +31,7 @@ import java.util.Date;
  */
 @WebServlet(name = "UserServlet", urlPatterns = {"/manageServlet.do"})
 public class manageServlet extends HttpServlet {
+    private FriendsDAO friendsDAO = DaoFactory.getFriendsDAOInstance();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -123,23 +125,28 @@ public class manageServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String otherAccount = request.getParameter("otherAccount");
-        OtherDAO otherDAO = new OtherDAOImpl();
-        Other other = new Other();
-        try {
-            other = otherDAO.getOtherByAccount(otherAccount);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (otherAccount==null&otherAccount.equals("")){
+            out.print("<script language=javascript>alert('账号不存在！请重试！');" +
+                    "window.location.href='manageFriend.jsp';</script>");
+        }else {
+            OtherDAO otherDAO = new OtherDAOImpl();
+            Other other = new Other();
+            try {
+                other = otherDAO.getOtherByAccount(otherAccount);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            Friends friends = new Friends();
+            friends.setName(other.getName());
+            friends.setAccount(other.getAccount());
+            friends.setAvatar(other.getAvatar());
+            try {
+                DaoFactory.getFriendsDAOInstance().insertFriend(friends);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            request.getRequestDispatcher("manageFriend.jsp").forward(request, response);
         }
-        Friends friends = new Friends();
-        friends.setName(other.getName());
-        friends.setAccount(other.getAccount());
-        friends.setAvatar(other.getAvatar());
-        try {
-            DaoFactory.getFriendsDAOInstance().insertFriend(friends);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        request.getRequestDispatcher("manageFriend.jsp").forward(request, response);
     }
 
     //日志管理

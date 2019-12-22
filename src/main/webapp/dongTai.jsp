@@ -3,19 +3,19 @@
 <%@ page import="com.soft7.web.personSpace.factory.DaoFactory" %>
 <%@ page import="com.soft7.web.personSpace.entity.User" %>
 <%@ page import="org.omg.DynamicAny.DynAnyOperations" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=GB2312" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>ä¸ªäººåŠ¨æ€</title>
+    <meta charset="GB2312">
+    <title>¸öÈË¶¯Ì¬</title>
     <style type="text/css">
         .contentImg {
             width: 500px;
             height: 350px;
         }
         .avatar {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
         }
 
@@ -47,8 +47,8 @@
             </tr>
             <tr>
                 <td align="right" colspan="2">
-                    å‘è¡¨æ—¶é—´ï¼š<%=dongtai.getDate()%> |
-                    è¯„è®º|
+                    ·¢±íÊ±¼ä£º<%=dongtai.getDate()%> |
+                    ÆÀÂÛ|
                 </td>
             </tr>
         </table>

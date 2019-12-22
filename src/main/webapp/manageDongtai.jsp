@@ -35,7 +35,7 @@
     </script>
 
 </head>
-<body>
+<body background="images/other/InfoBg.jpg">
 <center>
     <a href="AdminCenter.jsp" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
     <hr>

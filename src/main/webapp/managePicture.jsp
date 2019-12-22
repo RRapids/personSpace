@@ -18,7 +18,7 @@
         }
     </style>
 </head>
-<body>
+<body background="images/other/InfoBg.jpg">
 <a href="managePhoto.jsp" onclick="window.close()" style="font-size: 20px;text-decoration: none;color: #70CCFF;" >【返回上一级】</a>
 <hr>
 <table border="0" width="95%" cellspacing="0" style="margin-top:10px">
